@@ -1,0 +1,68 @@
+{
+  "explain_predatory": "Dhyan se dekhiye: Aapko haath me mile sirf ₹3,500, lekin 7 din baad wapas maange ja rahe hain poore ₹5,000! Yani sirf 7 dino ka kharcha hai ₹1,500 (42.86%). Is hisaab se saal ka asli byaj (APR) banta hai 2234.69%!\n\nYe standard bank loan (~12-18%) ke mukable hazaaron guna zyada hai aur pure loot hai. RBI ke digital lending rules ke anusaar 7-15 din ke aise loans illegal aur predatory hain.\n\nEk bhi rupaya extra na bharein aur na hi dhamki se darein. Turant app permissions band karein aur cyber crime portal par report karein.",
+  
+  "explain_risky": "Ye loan terms kaafi mehnge hain: Aapka simple annualised APR lagbhag 48.5% se 75% ke beech aa raha hai. Processing fees aur anya upfront deductions ke kaaran aapka effective byaj dar standard credit limits se kaafi ooncha hai.\n\nHalanki ye 7-day predatory loan jitna khatarnak nahi hai, lekin high APR ke kaaran aap debt trap me phas sakte hain. KFS (Key Fact Statement) aur grievance redressal officer ki detail dhyan se check karein.",
+  
+  "explain_safe": "Ye loan standard regulated banking norms ke anurup lag raha hai: Computed APR 14.5% se 24% ke beech hai, jo ki RBI-regulated banks aur NBFCs ke personal loans ke daayre me aata hai.\n\nTenure realistic hai aur upfront hidden charges nahi dikh rahe hain. Sirf itna ensure karein ki lender RBI directory me verified ho aur regular repayment capacity ho.",
+
+  "extract_sample": {
+    "principal": 5000,
+    "processing_fee": 1000,
+    "gst_on_fee": 180,
+    "other_deductions": 320,
+    "insurance_fee": 0,
+    "disbursed_amount": 3500,
+    "repayment_amount": 5000,
+    "tenure_days": 7,
+    "stated_interest_text": "30% only",
+    "stated_apr_shown": null,
+    "kfs_shown": false,
+    "grievance_officer_shown": false,
+    "cooling_off_mentioned": false,
+    "lender_name": "QuickRupee Lending",
+    "app_name": "QuickRupee Instant",
+    "confidence": 0.88
+  },
+
+  "threat_sample": [
+    {
+      "text": "Tere gallery ki photo edit karke gande tareeqe se tere dosto aur rishtedaaron ko bhej rahe hain.",
+      "labels": ["blackmail", "morphed_photo_threat"],
+      "severity": 5,
+      "language": "hinglish",
+      "key_phrases": ["gallery ki photo", "edit karke", "rishtedaaron ko bhej rahe"],
+      "why": "Threatens to morph private photos and circulate obscene material to relatives, which is criminal extortion and privacy violation."
+    },
+    {
+      "text": "Tumhare sabhi WhatsApp contacts ko message ja raha hai ki ye chor hai aur loan lekar bhaag gaya hai.",
+      "labels": ["contact_threat", "abusive_language"],
+      "severity": 4,
+      "language": "hinglish",
+      "key_phrases": ["WhatsApp contacts ko message", "ye chor hai"],
+      "why": "Illegal contact harassment, defamation, and intimidation using scraped phone contacts."
+    },
+    {
+      "text": "Police cyber cell FIR No 402/2026 registered. Police team arriving at your home address for arrest within 2 hours.",
+      "labels": ["fake_legal_threat", "impersonation_of_authority"],
+      "severity": 5,
+      "language": "hinglish",
+      "key_phrases": ["cyber cell FIR", "police team arriving", "arrest within 2 hours"],
+      "why": "Impersonation of law enforcement and issuing fraudulent arrest summons to coerce money."
+    }
+  ],
+
+  "complaint_sample": "COMPLAINT REGARDING ILLEGAL DIGITAL LENDING HARASSMENT, EXTORTION, AND CRIMINAL INTIMIDATION\n\nTo:\nThe In-Charge / Nodal Cyber Crime Officer,\nNational Cyber Crime Reporting Portal (cybercrime.gov.in) / Reserve Bank of India Sachet Portal\n\nSUBJECT: Formal complaint against unauthorized digital loan application 'QuickRupee Instant' and associated recovery agents for extortion, misuse of personal contacts, and criminal intimidation.\n\n1. COMPLAINANT DETAILS:\nName: [TO BE FILLED / As Provided]\nState / UT: Maharashtra\nContact: [TO BE FILLED]\n\n2. LENDER / APPLICATION DETAILS:\nApp Name: QuickRupee Instant\nAlleged Lending Entity: Unknown / Unregistered entity (claiming QuickRupee Finance)\nStated Loan Amount: ₹5,000\nAmount Actually Disbursed: ₹3,500 (After unnotified deductions of ₹1,500)\nRepayment Demanded: ₹5,000 within 7 days\nEffective Calculated APR: Exceeding 2,230% p.a.\n\n3. BRIEF SUMMARY OF GRIEVANCE:\nThe complainant downloaded the aforementioned mobile application. Without issuing a standardized Key Fact Statement (KFS) as mandated by the RBI Digital Lending Directions, 2022, the application deducted exorbitant fees and disbursed ₹3,500. Upon day 6, recovery agents unlawfully extracted the complainant's contact list and private photo gallery, and began issuing severe criminal threats.\n\n4. CHRONOLOGY OF INCIDENTS:\n- Event 1: Unsolicited WhatsApp messages received demanding immediate repayment with abusive language.\n- Event 2: Multiple WhatsApp calls from virtual numbers threatening to send morphed defamatory pictures to all phone contacts.\n- Event 3: Fraudulent police FIR notices and fake court summons shared over WhatsApp to induce panic and coerce payment.\n\n5. EVIDENCE PRESERVED:\n- Complete screenshots of threatening WhatsApp chats with visible phone numbers and timestamps.\n- Audio call recordings of verbal abuse and extortion threats.\n- Banking transaction statements proving disbursement of only ₹3,500 and UPI payment handles provided by agents.\n- Screenshots of the application interface displaying 7-day tenure and hidden charges.\n\n6. HARM CAUSED:\nSevere mental agony, reputational distress, harassment of innocent family members, and unlawful financial extortion.\n\n7. RELIEF REQUESTED:\n(a) Immediate investigation and registration of an FIR under relevant provisions of the Bharatiya Nyaya Sanhita (BNS 2023) for extortion and criminal intimidation, and the Information Technology Act for privacy violation.\n(b) Notice to telecommunication operators and UPI payment gateway intermediaries to freeze the associated mule accounts and virtual numbers.\n(c) Directives to remove the fraudulent application from digital stores and search engines.\n\nDECLARATION:\nI hereby declare that all the information provided above is true and correct to the best of my knowledge and belief. I have preserved all original digital evidence for forensic inspection.\n\nDate: [CURRENT_DATE]\nPlace: [AS PROVIDED]\nSignature / Complainant Name: [NAME]",
+
+  "family_sample": {
+    "headline": "Ghabraiye mat: Aap kisi loan ke liye zimmedar nahi hain.",
+    "core_message": "Agar aapko kisi rishtedaar ya dost ke loan ke naam par dhamki bhara message ya call aaya hai, to sabse pehle ye jaan lein ki aapne koi guarantee sign nahi ki hai. Sirf kisi ke phone me aapka contact save hone se aap par koi kanooni zimmedari nahi banti.",
+    "key_points": [
+      "Aap Guarantor nahi hain: Bharat ke kanoon me kisi ke contact list me hona legal liability nahi banata.",
+      "Paise bilkul na bhejein: Agar aap dar kar paise transfer karenge, to fraud recovery agents aapse aur paise vasoolne lagenge.",
+      "Dhamki dene wale ko block karein: Call ya message par baat-cheet na badhayein, turant screenshot lekar number block karein.",
+      "Borrower ko emotionally support karein: Borrower pehle se hi extortion trap me hai. Unhe police/cyber cell me complaint darj karne me madad karein."
+    ],
+    "what_to_say": "Recovery agent ko saaf bolein: 'Maine koi loan nahi liya aur na hi mai guarantor hu. Aapka contact access karna illegal hai. Agar dobara call kiya to mai 1930 Cyber Crime Helpline par aapka number report kar raha hu.'",
+    "helpline_info": "National Cyber Crime Helpline: 1930 | Official Portal: cybercrime.gov.in | RBI Sachet: sachet.rbi.org.in"
+  }
+}

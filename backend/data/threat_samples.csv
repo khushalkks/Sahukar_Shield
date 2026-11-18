@@ -1,0 +1,91 @@
+text,labels,severity,language
+"Dear customer your loan account is due tomorrow. Please pay on time to maintain credit score.",neutral_reminder,1,english
+"Aapka payment kal due hai kripya app open karke samay par payment karein.",neutral_reminder,1,hinglish
+"Reminder: EMI payment of Rs 1900 due on 5th. Tap link to pay via official gateway.",neutral_reminder,1,english
+"Namaste aapke aavedan ka payment date aa gaya hai kripya clear karein.",neutral_reminder,1,hinglish
+"Your due date is today. Avoid late fee by paying before 11 PM.",neutral_reminder,1,english
+"Aapki kist aaj clear kijiye aur penalty charges se bachiye.",neutral_reminder,1,hinglish
+"Friendly alert: Loan payment is pending for today. Click to pay safely.",neutral_reminder,1,english
+"Kripya apna pending installment aaj deposit karein.",neutral_reminder,1,hinglish
+"Greetings from Support team. Your monthly installment is due today.",neutral_reminder,1,english
+"Aapke account me EMI schedule pending hai kripya link se pay karein.",neutral_reminder,1,hinglish
+"Please note that today is the last day for scheduled repayment.",neutral_reminder,1,english
+"Namaste sir aapka loan clear karne ka samay ho gaya hai check karein.",neutral_reminder,1,hinglish
+"Payment window is open. Clear your balance to unlock higher loan limit.",neutral_reminder,1,english
+"Aapka EMI record theek rakhne ke liye aaj shaam tak pay karein.",neutral_reminder,1,hinglish
+"Notice: Tomorrow is repayment date. Pay via netbanking or UPI in app.",neutral_reminder,1,english
+"Kripya apna loan time pe bharein taki credit score bana rahe.",neutral_reminder,1,hinglish
+"Your account statement is ready. Please settle the due amount today.",neutral_reminder,1,english
+"Aaj payment ka aakhri ghanta bacha hai bina penalty ke pay karein.",neutral_reminder,1,hinglish
+"Gentle reminder regarding your pending balance. Link attached.",neutral_reminder,1,english
+"Aapka payment link active hai kripya check karein.",neutral_reminder,1,hinglish
+"Pay your pending amount immediately or file will be sent to recovery department.",payment_pressure,2,english
+"Aaj shaam 4 baje tak payment nahi kiya to charges double ho jayenge.",payment_pressure,2,hinglish
+"Urgent: Last chance to pay before additional penalty of Rs 500 per hour is applied.",payment_pressure,3,english
+"Phone kyu nahi utha rahe ho? Turant call back karo aur amount transfer karo.",payment_pressure,2,hinglish
+"Do not ignore calls. Clear your pending loan by 2 PM sharp.",payment_pressure,2,english
+"Aap jaan boojh kar call disconnect kar rahe hain. 30 minute me payment karein.",payment_pressure,3,hinglish
+"Payment has crossed due date. Settle immediately to stop automated warning calls.",payment_pressure,2,english
+"Agar 1 ghante me paise nahi aaye to penalty daily 2000 lagegi.",payment_pressure,3,hinglish
+"Final warning for payment settlement. Do not blame us for consequences.",payment_pressure,3,english
+"Paise liye hain to lautana padega. Aise phone switch off karne se kaam nahi chalega.",payment_pressure,3,hinglish
+"Dispute team is assigning field visit to your location today if unpaid.",payment_pressure,3,english
+"Aapka case escalation stage par hai. Turant clear karein varna dikkat hogi.",payment_pressure,3,hinglish
+"Your loan is overdue by 2 hours. Pay now or your profile will be blacklisted everywhere.",payment_pressure,3,english
+"Aapko kitni baar message karein? Abhi UPI karo aur screenshot bhejo.",payment_pressure,3,hinglish
+"Immediate clearance required. Agent is waiting for your transaction confirmation.",payment_pressure,2,english
+"Agar 10 minute me receipt nahi mili to case strict action me daal dunga.",payment_pressure,3,hinglish
+"Why are you running away after taking money? Clear dues right now.",payment_pressure,3,hinglish
+"Aapka file recovery officer ko handover ho raha hai jaldi bhariye.",payment_pressure,2,hinglish
+"Failure to pay within 1 hour will result in emergency recovery protocols.",payment_pressure,3,english
+"Samay khatam ho raha hai. Turant link open karke paise transfer kijiye.",payment_pressure,2,hinglish
+"Sharam nahi aati paise leke bhaag rahe ho? Chor jaisa behave mat karo.",abusive_language,4,hinglish
+"You fraud cheat, answer the call or you will face the worst humiliation of your life.",abusive_language,4,english
+"Tujhe lagta hai tu humare paise hazam kar lega? Teri saari akad nikaal denge.",abusive_language,4,hinglish
+"Bloody scammer, pay the money right now or we will drag your family into the street.",abusive_language,4,english
+"Bhikhmange jaise behave karna band kar aur turant paise transfer kar.",abusive_language,4,hinglish
+"You are a liar and a thief. Pay before 5 PM or face public shaming.",abusive_language,4,english
+"Teri aukaat nahi thi to loan kyu liya kutte ki tarah phone kaat raha hai.",abusive_language,4,hinglish
+"Useless deadbeat borrower, stop hiding and pay the loan immediately.",abusive_language,4,english
+"Aise logo ko sabak sikhana hume acche se aata hai. Bhari padega tujhe.",abusive_language,4,hinglish
+"Filthy defaulter, do not test our patience. Clear the balance right now.",abusive_language,4,english
+"Bakwas band karo aur chupchap payment karo warna jeena mushkil kar denge.",abusive_language,4,hinglish
+"You shameless person, return our funds right now or face severe public insults.",abusive_language,4,english
+"Paise chori karke bhag raha hai. Tere ghar pe hungama karenge abhi.",abusive_language,4,hinglish
+"Duffer borrower, your trick will not work with our team. Pay now.",abusive_language,4,english
+"Aukaat me rehke baat kar aur pehle humare paise wapas kar.",abusive_language,4,hinglish
+"Tere phone ke saare contacts mere paas hain. Teri mummy papa aur dosto ko call karunga.",contact_threat,4,hinglish
+"We have accessed your complete contact list. In 30 minutes all relatives will know you are a defaulter.",contact_threat,4,english
+"Tumhare sabhi WhatsApp contacts ko message ja raha hai ki ye chor hai aur loan lekar bhaag gaya hai.",contact_threat,4,hinglish
+"Your sister, father and boss numbers are listed with us. We are creating a group right now.",contact_threat,5,english
+"Phone nahi uthaya to tere poore contact list me sabko phone karke gaali denge aur paise mangenge.",contact_threat,4,hinglish
+"Sending bulk SMS to all 450 contacts on your phone telling them to pay on your behalf.",contact_threat,4,english
+"Aapke office ke HR aur colleagues ke phone numbers hain humare paas. Sabko call jaayega.",contact_threat,4,hinglish
+"All your phone contacts will receive your ID proof and loan default notice in 15 minutes.",contact_threat,4,english
+"Tere contacts me se 10 logo ko call karke bol diya hai ki tu unka naam dekar bhaag gaya hai.",contact_threat,5,hinglish
+"We will call your parents continuously until they pay your debt from their pocket.",contact_threat,4,english
+"Aapki poori phonebook mere haath me hai. Agar 20 minute me payment nahi aayi to sabko SMS blast hoga.",contact_threat,4,hinglish
+"Your employer has been identified. Calling your manager right now regarding your financial fraud.",contact_threat,4,english
+"Har ek contact ko photo ke saath bheja jayega ki ye aadmi cheat hai.",contact_threat,4,hinglish
+"We have your family phone numbers. They will face non-stop collection calls starting today.",contact_threat,4,english
+"Tere contact list ke har relative ko tera PAN card aur address forward kar rahe hain.",contact_threat,4,hinglish
+"Tere gallery ki photo edit karke gande tareeqe se tere dosto aur rishtedaaron ko bhej rahe hain.",morphed_photo_threat|blackmail,5,hinglish
+"We have downloaded photos from your phone gallery. Obscene morphed images will be circulated on social media.",morphed_photo_threat|blackmail,5,english
+"Aapki gallery se photo leke viral poster bana diya hai. Agar payment nahi hui to sab group me share hoga.",morphed_photo_threat|blackmail,5,hinglish
+"Pay in 10 minutes or your vulgar morphed photo with loan defaulter caption will be posted on Instagram.",morphed_photo_threat|blackmail,5,english
+"Teri aur tere family ki photo ko edit karke pornographic group me daalenge agar paise nahi mile.",morphed_photo_threat|blackmail,5,hinglish
+"Your private pictures are saved on our server. We will send edited nude photos to your contacts.",morphed_photo_threat|blackmail,5,english
+"Ghar walo ki photo morph karke defame kar denge agar aadhe ghante me loan clear nahi kiya.",morphed_photo_threat|blackmail,5,hinglish
+"We have prepared explicit defamatory images using your gallery. Pay now to stop the broadcast.",morphed_photo_threat|blackmail,5,english
+"Aapki photo ko obscene template me laga kar WhatsApp status par daal denge.",morphed_photo_threat|blackmail,5,hinglish
+"Your photo is being morphed into a wanted criminal poster and sent to your neighborhood contacts.",morphed_photo_threat|blackmail,5,english
+"Police cyber cell FIR No 402/2026 registered. Police team arriving at your home address for arrest within 2 hours.",fake_legal_threat|impersonation_of_authority,5,hinglish
+"HIGH COURT ARREST WARRANT ISSUED. Non-bailable warrant under Section 420. Pay immediately to cancel arrest.",fake_legal_threat|impersonation_of_authority,5,english
+"CBI and Crime branch officers dispatched to your location. Seizure of property and bank freeze initiated.",fake_legal_threat|impersonation_of_authority,5,hinglish
+"Legal notice: District Magistrate order issued for physical detention and public auction of assets.",fake_legal_threat,4,english
+"Police station se Sub-Inspector Sharma bol raha hu. 1 ghante me paise do varna custody me aana padega.",fake_legal_threat|impersonation_of_authority,5,hinglish
+"Judicial summons issued under Section 138 NI Act and BNS fraud. Court police dispatched to arrest you.",fake_legal_threat,5,english
+"Cyber Crime Cell Headquarters notice: Your biometric Aadhaar blocked and non-bailable FIR active.",fake_legal_threat|impersonation_of_authority,5,hinglish
+"Advocate legal summons: Police custody remand requested today unless loan amount is settled immediately.",fake_legal_threat,4,english
+"Aapke khilaaf police chowki me warrant aa gaya hai. Paise abhi jama karo varna gaadi bhej rahe hain.",fake_legal_threat|impersonation_of_authority,5,hinglish
+"Supreme Court recovery tribunal order: Immediate attachment of bank account and passport impounding.",fake_legal_threat,5,english

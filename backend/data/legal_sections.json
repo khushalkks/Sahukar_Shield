@@ -1,0 +1,61 @@
+{
+  "source_note": "Verify with official gazette, cybercrime officer, or a licensed lawyer. Indian Penal Code provisions transitioned to Bharatiya Nyaya Sanhita (BNS) 2023.",
+  "labels": {
+    "blackmail": {
+      "title": "Extortion & Blackmail",
+      "bns_sections": "BNS Section 308 (Extortion) / Section 351 (Criminal Intimidation)",
+      "it_act": "Information Technology Act Section 66E (Violation of privacy) & 66D",
+      "description": "Demanding money by putting a person or their family in fear of injury, reputational harm, or exposing personal data is a cognizable criminal offence.",
+      "rbi_directive": "RBI Digital Lending Guidelines (Sept 2022) strictly prohibit recovery agents from resorting to intimidation, harassment, or verbal abuse."
+    },
+    "morphed_photo_threat": {
+      "title": "Morphed Photos / Obscene Defamation",
+      "bns_sections": "BNS Section 79 (Word, gesture or act intended to insult modesty) / Section 356 (Defamation)",
+      "it_act": "Information Technology Act Section 67 & 67A (Transmitting sexually explicit or obscene material in electronic form), Section 66E",
+      "description": "Morphing personal photographs extracted from device galleries or threatening to publish defamatory images is punishable with rigorous imprisonment and non-bailable warrants.",
+      "rbi_directive": "Lending apps are explicitly barred from accessing mobile device media, photo galleries, or camera permissions without direct loan KYC requirement."
+    },
+    "contact_threat": {
+      "title": "Harassment of Contacts / Phonebook Misuse",
+      "bns_sections": "BNS Section 351 (Criminal Intimidation) / Section 356 (Defamation)",
+      "it_act": "Information Technology Act Section 66E (Privacy infringement) & Section 43A",
+      "description": "Threatening to contact relatives, employers, or phonebook contacts to shame the borrower is illegal. Contacts have no legal liability as guarantors.",
+      "rbi_directive": "RBI explicitly mandates that Digital Lending Apps (DLAs) cannot access contact lists, call logs, or phonebook directories under any circumstances."
+    },
+    "abusive_language": {
+      "title": "Verbal Abuse & Intentional Insult",
+      "bns_sections": "BNS Section 352 (Intentional insult with intent to provoke breach of peace)",
+      "it_act": "Information Technology Act Section 66A (principles) & telecom harassment regulations",
+      "description": "Using foul, degrading, or abusive language over phone or messaging apps constitutes harassment and breach of public peace.",
+      "rbi_directive": "Lenders and recovery agents are forbidden from contacting borrowers at odd hours (before 8 AM or after 7 PM) or using derogatory terms."
+    },
+    "fake_legal_threat": {
+      "title": "Fake Legal Notices & Court Summons",
+      "bns_sections": "BNS Section 336 (Forgery) / Section 338 (Forgery of valuable security / court document)",
+      "it_act": "Information Technology Act Section 66D (Cheating by personation using computer resource)",
+      "description": "Fabricating police notices, court warrants, or CBI/Cyber Cell arrest threats to compel payment constitutes forgery and fraud.",
+      "rbi_directive": "Debt recovery through intimidation with fake legal letterheads violates Fair Practices Code (FPC) and invites cancellation of lending registration."
+    },
+    "impersonation_of_authority": {
+      "title": "Impersonation of Police or Public Servant",
+      "bns_sections": "BNS Section 204 (Impersonating a public servant) / Section 318 (Cheating)",
+      "it_act": "Information Technology Act Section 66D (Cheating by personation)",
+      "description": "Recovery agents posing as police officers, cyber cell inspectors, or court bailiffs commit severe criminal offences.",
+      "rbi_directive": "Only legitimate judicial recovery processes can be instituted by regulated entities; recovery agents have zero police powers."
+    },
+    "payment_pressure": {
+      "title": "Unfair Coercive Recovery Practices",
+      "bns_sections": "BNS Section 351 (Intimidation where threats are implied)",
+      "it_act": "Consumer Protection Act 2019 (Unfair trade practices)",
+      "description": "Continuous badgering, repeated calls within minutes, or threatening social boycott violates borrower protection norms.",
+      "rbi_directive": "RBI requires regulated entities to have dedicated grievance redressal officers and adhere to the Master Direction on Fair Practices."
+    },
+    "neutral_reminder": {
+      "title": "Standard Due Date Reminder",
+      "bns_sections": "N/A - Standard commercial communication",
+      "it_act": "Telecom Commercial Communications Customer Preference Regulations (TCCCPR)",
+      "description": "Polite payment reminders detailing principal, balance due, and formal payment portal link.",
+      "rbi_directive": "Must be sent through registered telemarketer (RTM) channels with verified sender IDs."
+    }
+  }
+}

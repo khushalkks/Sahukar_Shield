@@ -1,0 +1,16 @@
+app_name,package_id,lender_name,status,rbi_entity_type
+DemoBank Easy Loan,com.demobank.easyloan,Demo Commercial Bank Ltd,LISTED,Scheduled Commercial Bank
+Sampark Finserv Lend,com.sampark.finserv,Sampark Capital NBFC Ltd,LISTED,NBFC - Investment and Credit Company (ICC)
+Nirmal Credit Plus,com.nirmal.creditplus,Nirmal Financial Services Ltd,LISTED,NBFC - Core Investment Company
+Pragati Personal Credit,com.pragati.credit,Pragati Mahila Microfinance NBFC,LISTED,NBFC - Micro Finance Institution (MFI)
+Vikas Money Trust,com.vikas.moneytrust,Vikas Capital Partners Ltd,LISTED,NBFC - Factor
+Suraksha Retail Loans,com.suraksha.retail,Suraksha General Finance Ltd,LISTED,NBFC - ICC
+Kuber Dhan Sathi,com.kuber.dhansathi,Kuber Housing Finance Ltd,LISTED,Housing Finance Company (HFC)
+Aastha Sahayak Credit,com.aastha.sahayak,Aastha Financial Enterprise Ltd,LISTED,NBFC - ICC
+Udaan Rural Microloan,com.udaan.ruralmicro,Udaan Grameen Microfinance Ltd,LISTED,NBFC - MFI
+Bharat Udyog Credit,com.bharat.udyogcredit,Bharat Industrial Finance Corp,LISTED,Scheduled Commercial Bank
+Janata Parivar Loan,com.janata.parivar,Janata Cooperative Bank Ltd,LISTED,Urban Cooperative Bank
+Sahaj Paisa Safe,com.sahaj.paisasafe,Sahaj Non-Banking Lending Ltd,LISTED,NBFC - ICC
+Apna Vyapar Sahyog,com.apna.vyaparsahyog,Vyapar Credit Union Corp,LISTED,NBFC - ICC
+Sankalp Kisan Finance,com.sankalp.kisan,Sankalp Agro Financials Ltd,LISTED,NBFC - ICC
+Maitri Consumer Finance,com.maitri.consumer,Maitri Retail Credit Ltd,LISTED,NBFC - ICC

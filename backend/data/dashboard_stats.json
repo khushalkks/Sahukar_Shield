@@ -1,0 +1,54 @@
+{
+  "is_demo_data": true,
+  "data_disclaimer": "All statistics displayed are synthetic demo data generated for system evaluation and demonstration purposes.",
+  "total_reports_tracked": 12840,
+  "average_flagged_apr": 1240.5,
+  "top_flagged_apps": [
+    {"name": "QuickRupee Instant", "reports": 1420, "risk_category": "7-Day & Contact Harassment"},
+    {"name": "CashNow Express", "reports": 1280, "risk_category": "Morphed Photo Threats"},
+    {"name": "Jhatpat Loan", "reports": 980, "risk_category": "Fake Legal Notices"},
+    {"name": "SabkaPaisa Fast", "reports": 870, "risk_category": "Advance Fee Scam"},
+    {"name": "Rupee Rocket", "reports": 850, "risk_category": "Abusive Recovery Calls"},
+    {"name": "PocketKosh Instant", "reports": 790, "risk_category": "Extortion & Threats"},
+    {"name": "FastCredit 24x7", "reports": 740, "risk_category": "WhatsApp Group Harassment"},
+    {"name": "ShreeDhan Express", "reports": 690, "risk_category": "Gallery Blackmail"},
+    {"name": "Super Paisa Easy", "reports": 640, "risk_category": "2000%+ APR Trap"},
+    {"name": "InstaRupee 5Min", "reports": 610, "risk_category": "Employer Threat Blasts"}
+  ],
+  "scam_patterns": [
+    {"pattern": "7-day & Short Tenure Loans", "percentage": 38, "count": 4879},
+    {"pattern": "Contact Harassment & Doxing", "percentage": 28, "count": 3595},
+    {"pattern": "Advance Fee / Upfront Deductions", "percentage": 22, "count": 2825},
+    {"pattern": "Fake Legal Threats & Warrants", "percentage": 12, "count": 1541}
+  ],
+  "monthly_trend": [
+    {"month": "Dec 2025", "reports": 780, "resolved": 540},
+    {"month": "Jan 2026", "reports": 850, "resolved": 610},
+    {"month": "Feb 2026", "reports": 920, "resolved": 680},
+    {"month": "Mar 2026", "reports": 1040, "resolved": 760},
+    {"month": "Apr 2026", "reports": 1120, "resolved": 830},
+    {"month": "May 2026", "reports": 1250, "resolved": 910},
+    {"month": "Jun 2026", "reports": 1180, "resolved": 890},
+    {"month": "Jul 2026", "reports": 1290, "resolved": 960},
+    {"month": "Aug 2026", "reports": 1340, "resolved": 1020},
+    {"month": "Sep 2026", "reports": 1410, "resolved": 1090},
+    {"month": "Oct 2026", "reports": 1480, "resolved": 1150},
+    {"month": "Nov 2026", "reports": 1180, "resolved": 900}
+  ],
+  "state_wise_distribution": [
+    {"state": "Maharashtra", "reports": 2680, "pct": 20.9},
+    {"state": "Uttar Pradesh", "reports": 2240, "pct": 17.4},
+    {"state": "Karnataka", "reports": 1780, "pct": 13.9},
+    {"state": "Delhi NCR", "reports": 1620, "pct": 12.6},
+    {"state": "Telangana", "reports": 1410, "pct": 11.0},
+    {"state": "Bihar", "reports": 1150, "pct": 9.0},
+    {"state": "Rajasthan", "reports": 1020, "pct": 7.9},
+    {"state": "Madhya Pradesh", "reports": 940, "pct": 7.3}
+  ],
+  "complaint_outcomes": {
+    "police_complaint_registered": "68%",
+    "sim_accounts_blocked": "4,120+",
+    "mule_upi_ids_frozen": "3,480+",
+    "avg_resolution_time_days": 14
+  }
+}

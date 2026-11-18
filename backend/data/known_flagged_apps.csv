@@ -1,0 +1,21 @@
+app_name,package_id,reported_pattern,reports_count,status
+QuickRupee Instant,com.quickrupee.instant,7-day loan with 45% deductions and contact blackmail,1420,FLAGGED_PREDATORY
+CashNow Express,com.cashnow.express,Contacts scraping and morphed photo threats on WhatsApp,1280,FLAGGED_PREDATORY
+Jhatpat Loan,com.jhatpat.loan,Harassment of relatives and fake court notices,980,FLAGGED_PREDATORY
+SabkaPaisa Fast,com.sabkapaisa.fast,Advance fee demand before disbursal,870,FLAGGED_PREDATORY
+Rupee Rocket,com.rupeerocket.fastloan,Extortion calls with abusive language,850,FLAGGED_PREDATORY
+PocketKosh Instant,com.pocketkosh.online,7-day cycle and fake legal summons,790,FLAGGED_PREDATORY
+FastCredit 24x7,com.fastcredit.india,WhatsApp group harassment with contact list,740,FLAGGED_PREDATORY
+ShreeDhan Express,com.shreedhan.fast,Blackmail with gallery images,690,FLAGGED_PREDATORY
+Super Paisa Easy,com.superpaisa.easyloan,Over 2000% APR and threatening SMS blasts,640,FLAGGED_PREDATORY
+InstaRupee 5Min,com.instarupee.fivemin,Threats to call employer and family contacts,610,FLAGGED_PREDATORY
+Chutki Loan Pro,com.chutki.loanpro,Fake police officer impersonation calls,580,FLAGGED_PREDATORY
+DhanBarsha Instant,com.dhanbarsha.credit,Unauthorized loan disbursal and high demand,540,FLAGGED_PREDATORY
+SpeedyCash India,com.speedycash.in,Demand for double repayment in 6 days,510,FLAGGED_PREDATORY
+MahaCredit Quick,com.mahacredit.quick,Morphed photos sent to phone contacts,490,FLAGGED_PREDATORY
+PaisaPocket Pro,com.paisapocket.pro,Extortion after loan paid with fake NOC,460,FLAGGED_PREDATORY
+LoanMitra Instant,com.loanmitra.instant,Fake cyber cell summons PDF sent,430,FLAGGED_PREDATORY
+ApnaCash 100,com.apnacash.hundred,Harassment of parents and spouse via WhatsApp,390,FLAGGED_PREDATORY
+RupiyaMitra Fast,com.rupiyamitra.fast,Demands processing fees via UPI up front,370,FLAGGED_PREDATORY
+EasyKosh Personal,com.easykosh.app,7-day tenure with 3000% APR,350,FLAGGED_PREDATORY
+DhanVrishti Quick,com.dhanvrishti.express,Abusive language sent to phonebook contacts,310,FLAGGED_PREDATORY

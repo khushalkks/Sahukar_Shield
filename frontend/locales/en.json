@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "title": "Sahukar Shield",
+    "tagline": "Check before borrowing. Know the true interest. Respond to threats.",
+    "verify": "Verify App",
+    "cost": "True Cost (APR)",
+    "threat": "Threat Shield",
+    "complaint": "Complaint Builder",
+    "family": "Family Alert",
+    "dashboard": "Scam Dashboard",
+    "about": "About Us",
+    "helpline": "1930 Helpline"
+  },
+  "privacy_banner": "Zero Data Retention: No user data, screenshots, or messages are stored. All calculations run ephemerally in memory.",
+  "disclaimer": "Sahukar Shield is a consumer defense and legal awareness tool. It does not provide legal or financial advice. Consult cybercrime authorities or a licensed lawyer for judicial filings.",
+  "emergency_strip": "Immediate Help: National Cyber Crime Helpline 1930 | cybercrime.gov.in | RBI Sachet: sachet.rbi.org.in",
+  "home": {
+    "hero_title": "Check before borrowing. Know the true interest. Respond to threats.",
+    "hero_subtitle": "Defend yourself against illegal 7-day lending apps. Verify RBI directory status, uncover 2000%+ APR traps, and generate legally structured cybercrime complaints.",
+    "cta_verify": "Verify App Now",
+    "cta_cost": "Calculate True APR",
+    "cta_threat": "Analyze Threats",
+    "how_it_works_title": "How Sahukar Shield Works",
+    "step1_title": "1. Before Borrowing: App Verifier",
+    "step1_desc": "Match against RBI regulated entities and check intrusive permission risk scores before installing.",
+    "step2_title": "2. While Borrowing: True Cost X-Ray",
+    "step2_desc": "Extract hidden deductions and compute genuine simple annualised APR via deterministic Python code.",
+    "step3_title": "3. After Harassment: Threat Shield & PDF",
+    "step3_desc": "Classify recovery extortion under BNS 2023 & IT Act. Download an official PDF ready for cybercrime.gov.in.",
+    "stats_strip_title": "Sahukar Shield Benchmark Metrics",
+    "stats_apps_flagged": "Flagged Predatory Apps",
+    "stats_apr_uncovered": "Peak APR Detected",
+    "stats_complaints_built": "Ready-to-File PDF Complaints",
+    "sample_try_btn": "Try Demo Workflow",
+    "sample_story": "Ramesh's story: Saw an Instagram ad for a ₹5,000 loan. Received only ₹3,500 after deductions. Demanded ₹5,000 in 7 days (2,235% APR) with threats to leak gallery photos. Sahukar Shield neutralized the extortion in 3 minutes."
+  },
+  "verify": {
+    "title": "Loan App Verification & Risk Check",
+    "subtitle": "Enter the app name or Play Store URL. Checks RBI directory and device permission risk.",
+    "input_placeholder": "e.g., QuickRupee Instant, or Play Store URL...",
+    "btn_check": "Verify App",
+    "perms_heading": "What permissions does the app request?",
+    "flags_heading": "Developer Red Flags (tick applicable):",
+    "verdict_safe": "VERIFIED (SAFE)",
+    "verdict_risky": "UNVERIFIED / RISKY",
+    "verdict_predatory": "PREDATORY APP (ILLEGAL)",
+    "sample_chips": "Try Sample:"
+  },
+  "cost": {
+    "title": "True Cost X-Ray (True APR Calculator)",
+    "subtitle": "Upload loan screenshot or paste offer text. Computes exact effective annual percentage rate.",
+    "tab_upload": "Upload Screenshot",
+    "tab_text": "Paste Text",
+    "tab_manual": "Manual Entry",
+    "btn_calculate": "Calculate True APR",
+    "sample_btn": "Load 7-Day Predatory Sample",
+    "bank_comparison": "Comparison With Regulated Benchmarks",
+    "you_received": "Money Received",
+    "you_repay": "Repayment Demanded",
+    "total_cost": "True Cost / Fee"
+  },
+  "threat": {
+    "title": "Threat Shield (Message Classifier)",
+    "subtitle": "Paste recovery agent messages or upload screenshots to identify illegal intimidation tactics.",
+    "input_placeholder": "Paste recovery agent messages (one per line)...",
+    "btn_analyze": "Classify Messages",
+    "voice_btn": "Voice Input",
+    "severity_banner": "Case Severity Level",
+    "legal_panel_title": "Legal Rights (BNS 2023 & IT Act)",
+    "safe_action_title": "Immediate Safe Action Steps",
+    "btn_build_complaint": "Build Formal Complaint"
+  },
+  "complaint": {
+    "title": "Cybercrime Complaint Builder",
+    "subtitle": "Generate a formal, chronological complaint draft and official PDF for cybercrime.gov.in and 1930 helpline.",
+    "step1": "1. Complainant Info",
+    "step2": "2. Loan Details",
+    "step3": "3. Timeline of Events",
+    "step4": "4. Evidence Checklist",
+    "btn_next": "Next Step",
+    "btn_prev": "Back",
+    "btn_generate": "Generate Complaint PDF",
+    "download_pdf": "Download Official Complaint PDF",
+    "script_title": "1930 Call Script (What to say in 30 seconds)"
+  },
+  "family": {
+    "title": "Family Alert: Guide for Contacts & Relatives",
+    "subtitle": "Received threats regarding someone else's debt? You are not legally responsible.",
+    "input_placeholder": "Paste the threatening message received...",
+    "btn_explain": "Get Family Guidance",
+    "whatsapp_card_title": "WhatsApp Share Card",
+    "whatsapp_card_desc": "Share this advisory text in your family group to stop panic and blackmail.",
+    "btn_copy_share": "Copy WhatsApp Advisory",
+    "guarantor_vs_contact": "Contact vs Guarantor: Legal Distinction"
+  },
+  "dashboard": {
+    "title": "Predatory Lending Scam Dashboard",
+    "subtitle": "Empirical analytics: predatory patterns, top flagged apps, and average interest rates.",
+    "demo_badge": "Synthetic Benchmark Data"
+  },
+  "about": {
+    "title": "About Sahukar Shield",
+    "mission_title": "Our Mission",
+    "mission_desc": "Protecting Indian borrowers from predatory digital lending syndicates through transparent mathematics, automated rights verification, and cybercrime readiness."
+  }
+}

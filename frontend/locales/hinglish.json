@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "title": "Sahukar Shield",
+    "tagline": "Loan lene se pehle check karo. Asli byaj jaano. Dhamki mile to jawab do.",
+    "verify": "App Check Karo",
+    "cost": "True Cost (APR)",
+    "threat": "Threat Shield",
+    "complaint": "Complaint Banao",
+    "family": "Family Alert",
+    "dashboard": "Scam Dashboard",
+    "about": "About Us",
+    "helpline": "1930 Helpline"
+  },
+  "privacy_banner": "Aapka data store nahi hota. Har jaankari sirf aapke screen par compute hoti hai aur process ke baad discard ho jaati hai.",
+  "disclaimer": "Sahukar Shield ek consumer education aur awareness platform hai. Ye legal ya financial advice nahi hai. Kisi bhi legal action ke liye cyber police ya licensed advocate se salah lein.",
+  "emergency_strip": "Turant Madad: Cyber Crime Helpline 1930 | National Portal: cybercrime.gov.in | RBI Sachet: sachet.rbi.org.in",
+  "home": {
+    "hero_title": "Loan lene se pehle check karo. Asli byaj jaano. Dhamki mile to jawab do.",
+    "hero_subtitle": "Illegal 7-day loan apps se bachein. RBI register verify karein, 2000%+ APR ka asli sach samjhein, aur extortion messages ka kanooni jawab dein.",
+    "cta_verify": "App Verify Karo",
+    "cta_cost": "Asli Byaj (APR) Nikalo",
+    "cta_threat": "Dhamki Ka Jawab Do",
+    "how_it_works_title": "Sahukar Shield Kaise Kaam Karta Hai",
+    "step1_title": "1. Pehle: App Check Karo",
+    "step1_desc": "RBI registered lender directory aur permissions check karke jaan lo ki app genuine hai ya illegal predatory trap.",
+    "step2_title": "2. Loan Lete Samay: Asli Byaj X-Ray",
+    "step2_desc": "Screenshot upload karo. Code se calculated exact simple APR aur hidden deductions dekho. Sach samjho.",
+    "step3_title": "3. Dhamki Milne Par: Legal Action & PDF",
+    "step3_desc": "Recovery messages classify karo. BNS & IT Act ke tehat cyber crime ready formal complaint PDF download karo.",
+    "stats_strip_title": "Sahukar Shield Impact Benchmark",
+    "stats_apps_flagged": "Flagged Apps Directory",
+    "stats_apr_uncovered": "Max APR Trap Detected",
+    "stats_complaints_built": "Ready-to-File PDF Templates",
+    "sample_try_btn": "Sample Demo Try Karo",
+    "sample_story": "Ramesh ki kahani: Instagram pe ad dekha '5 minute me ₹5,000 loan'. ₹1,500 advance kaat ke mile sirf ₹3,500. 7 din baad ₹5,000 mange aur gallery photos leak karne ki dhamki di. Sahukar Shield ne 3 minute me case solve kiya."
+  },
+  "verify": {
+    "title": "Loan App Verification & Risk Check",
+    "subtitle": "Play Store URL ya app ka naam likhein. RBI directory match aur permissions check karein.",
+    "input_placeholder": "Jaise: QuickRupee Instant, ya Play Store link...",
+    "btn_check": "Verify Karo",
+    "perms_heading": "App kaunse permissions maang raha hai?",
+    "flags_heading": "Developer ke red flags (check karein):",
+    "verdict_safe": "VERIFIED (SAFE)",
+    "verdict_risky": "UNVERIFIED / RISKY",
+    "verdict_predatory": "PREDATORY APP (ILLEGAL)",
+    "sample_chips": "Sample try karo:"
+  },
+  "cost": {
+    "title": "True Cost X-Ray (Asli APR Calculator)",
+    "subtitle": "Loan offer ka screenshot upload karo ya text paste karo. Code aapka exact annualised interest rate calculate karega.",
+    "tab_upload": "Screenshot Upload",
+    "tab_text": "Text Paste",
+    "tab_manual": "Manual Form",
+    "btn_calculate": "Asli APR Calculate Karo",
+    "sample_btn": "Predatory 7-Day Sample Load Karo",
+    "bank_comparison": "Market Byaj Rates Se Tulna",
+    "you_received": "Tumhe mile",
+    "you_repay": "Wapas dene hain",
+    "total_cost": "Asli kharcha / byaj"
+  },
+  "threat": {
+    "title": "Threat Shield (Dhamki Classifier)",
+    "subtitle": "Recovery agents ke WhatsApp/SMS messages paste karein ya screenshot upload karein.",
+    "input_placeholder": "Recovery agent ke messages paste karein (alag alag lines me)...",
+    "btn_analyze": "Messages Classify Karo",
+    "voice_btn": "Bol kar likhein (Voice)",
+    "severity_banner": "Case Severity Level",
+    "legal_panel_title": "Kanooni Jaankari (BNS 2023 & IT Act)",
+    "safe_action_title": "Abhi Turant Kya Karein (Safe Actions)",
+    "btn_build_complaint": "Is Case Ki Complaint Banao"
+  },
+  "complaint": {
+    "title": "Cybercrime Complaint Builder",
+    "subtitle": "Cyber crime portal (cybercrime.gov.in) aur 1930 helpline ke liye formal factual complaint draft aur PDF tayyar karein.",
+    "step1": "1. Aapki Details",
+    "step2": "2. Loan Details",
+    "step3": "3. Timeline Events",
+    "step4": "4. Evidence Checklist",
+    "btn_next": "Aage Badhein",
+    "btn_prev": "Peeche",
+    "btn_generate": "Complaint PDF Generate Karo",
+    "download_pdf": "Official Complaint PDF Download Karein",
+    "script_title": "1930 Call Script (30 Seconds me kya bolein)"
+  },
+  "family": {
+    "title": "Family Alert: Rishtedaaron Ke Liye Guide",
+    "subtitle": "Agar aapko kisi aur ke loan ke naam par recovery agent se dhamki aayi hai, to pareshan na hon.",
+    "input_placeholder": "Aapko jo dhamki bhara message aaya hai yahan paste karein...",
+    "btn_explain": "Sahi Jaankari Paayein",
+    "whatsapp_card_title": "WhatsApp Share Card",
+    "whatsapp_card_desc": "Ye message apne family WhatsApp group ya contacts me share karein taaki koi unhe blackmail na kar sake.",
+    "btn_copy_share": "WhatsApp Message Copy Karein",
+    "guarantor_vs_contact": "Guarantor vs Contact ka Fark"
+  },
+  "dashboard": {
+    "title": "Predatory Loan Scam Dashboard",
+    "subtitle": "Synthetic benchmark analytics: common predatory patterns, top reported fake apps, aur average APR.",
+    "demo_badge": "Demo Data Benchmark"
+  },
+  "about": {
+    "title": "Sahukar Shield Ke Baare Me",
+    "mission_title": "Humara Lakshya",
+    "mission_desc": "Bharat me lakho aam nagrik digital lending scams aur aggressive recovery harassment ka shikar hote hain. Sahukar Shield unhe tech aur kanooni samajh se surakshit karta hai."
+  }
+}

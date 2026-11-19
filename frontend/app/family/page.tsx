@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Users, Shield, HeartHandshake, AlertCircle, Sparkles, MessageCircle, Copy, Check, Info } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { Users, Shield, HeartHandshake, AlertCircle, Sparkles, MessageCircle, Copy, Check, Info, Download, Image as ImageIcon } from "lucide-react";
 import ShareButtons from "../../components/ShareButtons";
 import Disclaimer from "../../components/Disclaimer";
 import { getFamilyAdvisory } from "../../lib/api";
@@ -20,6 +20,75 @@ export default function FamilyPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<FamilyResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const downloadImageCard = () => {
+    if (!result) return;
+    const canvas = document.createElement("canvas");
+    canvas.width = 1200;
+    canvas.height = 630;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Background gradient
+    const grad = ctx.createLinearGradient(0, 0, 1200, 630);
+    grad.addColorStop(0, "#0B1F3A");
+    grad.addColorStop(1, "#071324");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1200, 630);
+
+    // Decorative border
+    ctx.strokeStyle = "#14B8A6";
+    ctx.lineWidth = 6;
+    ctx.strokeRect(24, 24, 1152, 582);
+
+    // Header badge
+    ctx.fillStyle = "#DC2626";
+    ctx.beginPath();
+    ctx.roundRect(60, 55, 460, 48, 10);
+    ctx.fill();
+
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 22px Inter, system-ui, sans-serif";
+    ctx.fillText("SAHUKAR SHIELD | LEGAL ADVISORY", 80, 88);
+
+    // Main Title
+    ctx.fillStyle = "#2DD4BF";
+    ctx.font = "bold 42px Inter, system-ui, sans-serif";
+    ctx.fillText("Aap Kisi Loan Ke Liye Guarantor Nahi Hain!", 60, 170);
+
+    // Subtitle
+    ctx.fillStyle = "#E2E8F0";
+    ctx.font = "24px Inter, system-ui, sans-serif";
+    ctx.fillText("Fraud Recovery Agents Ke Dabav Me Aakar Paise Bilkul Na Bhejein.", 60, 220);
+
+    // Rules
+    const rules = [
+      "1. Contact List Chori: Phone contacts me hona aapko legally responsible nahi banata.",
+      "2. Paise Na Bhejein: Ek rupaya bhi transfer na karein; ye illegal extortion syndicate hai.",
+      "3. Number Block Karein: Proof/Screenshot lene ke baad dhamki dene wale numbers block karein.",
+      "4. Emergency Helpline: Turant 1930 Cyber Cell helpline par call karein ya cybercrime.gov.in par report karein."
+    ];
+
+    ctx.fillStyle = "#F8FAFC";
+    ctx.font = "500 22px Inter, system-ui, sans-serif";
+    rules.forEach((rule, idx) => {
+      ctx.fillText(rule, 60, 290 + idx * 52);
+    });
+
+    // Footer
+    ctx.fillStyle = "#0F2942";
+    ctx.fillRect(35, 520, 1130, 70);
+
+    ctx.fillStyle = "#38BDF8";
+    ctx.font = "bold 21px Inter, system-ui, sans-serif";
+    ctx.fillText("Helpline 1930 | cybercrime.gov.in | sachet.rbi.org.in | Zero Personal Liability", 60, 562);
+
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.download = "Sahukar_Shield_Family_Alert.png";
+    link.href = dataUrl;
+    link.click();
+  };
 
   const handleExplain = async (overrideMsg?: string) => {
     const msg = overrideMsg || message;
@@ -193,7 +262,17 @@ export default function FamilyPage() {
               {result.share_text}
             </div>
 
-            <ShareButtons shareText={result.share_text} />
+            <div className="flex flex-wrap items-center gap-3">
+              <ShareButtons shareText={result.share_text} />
+              <button
+                type="button"
+                onClick={downloadImageCard}
+                className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs shadow-sm transition-all"
+              >
+                <Download className="w-4 h-4" />
+                <span>Warning Card Image Download (PNG)</span>
+              </button>
+            </div>
           </div>
 
           <Disclaimer inline />
@@ -202,3 +281,4 @@ export default function FamilyPage() {
     </div>
   );
 }
+

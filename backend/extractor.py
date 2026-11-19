@@ -80,35 +80,63 @@ def _sanitize_extracted_dict(d: dict) -> dict:
 def _heuristic_text_extraction(text: str) -> dict:
     """Deterministic regex extraction fallback for common loan offers."""
     t = text.lower()
+    curr_prefix = r"(?:rs\.?|inr|₹)?"
+    
     principal = None
     repay = None
     tenure = None
+    disbursed = None
+    fee = 0.0
+    gst = 0.0
+    other = 0.0
     
-    m_p = re.search(r"(?:principal|loan amount|sanctioned|limit|amount)[:\s]*₹?\s*([0-9,]+)", t)
+    m_p = re.search(rf"(?:principal|loan amount|sanctioned|limit|amount)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
     if m_p:
         principal = float(m_p.group(1).replace(",", ""))
 
-    m_r = re.search(r"(?:repay|repayment|total payable|total due)[:\s]*₹?\s*([0-9,]+)", t)
+    m_r = re.search(rf"(?:repay|repayment|total payable|total due)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
     if m_r:
         repay = float(m_r.group(1).replace(",", ""))
 
+    m_d = re.search(rf"(?:disbursed|you receive|receive)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
+    if m_d:
+        disbursed = float(m_d.group(1).replace(",", ""))
+
+    # Tenure: days or months
     m_t = re.search(r"([0-9]+)\s*(?:days|din|day)", t)
     if m_t:
         tenure = int(m_t.group(1))
+    else:
+        m_tm = re.search(r"([0-9]+)\s*(?:months|month|mos|mahine)", t)
+        if m_tm:
+            tenure = int(m_tm.group(1)) * 30
 
-    m_fee = re.search(r"(?:processing fee|fee|charges)[:\s]*₹?\s*([0-9,]+)", t)
-    fee = float(m_fee.group(1).replace(",", "")) if m_fee else 0.0
+    m_fee = re.search(rf"(?:processing fee|fee|charges|platform fee|platform charges)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
+    if m_fee:
+        fee = float(m_fee.group(1).replace(",", ""))
+
+    m_gst = re.search(rf"(?:gst|tax)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
+    if m_gst:
+        gst = float(m_gst.group(1).replace(",", ""))
+
+    m_other = re.search(rf"(?:other deductions|other charges|other)[:\s]*{curr_prefix}\s*([0-9,]+)", t)
+    if m_other:
+        other = float(m_other.group(1).replace(",", ""))
 
     if not principal:
         fallback = FALLBACKS.get("extract_sample", {})
         return _sanitize_extracted_dict(fallback)
 
-    disbursed = principal - fee
+    if disbursed is None:
+        disbursed = principal - fee - gst - other
+
     return _sanitize_extracted_dict({
         "principal": principal,
         "processing_fee": fee,
+        "gst_on_fee": gst,
+        "other_deductions": other,
         "disbursed_amount": disbursed,
         "repayment_amount": repay or principal,
         "tenure_days": tenure or 7,
-        "confidence": 0.75
+        "confidence": 0.85
     })

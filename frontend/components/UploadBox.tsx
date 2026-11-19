@@ -10,18 +10,21 @@ interface UploadBoxProps {
 }
 
 export const SAMPLES = [
-  { id: "sample_predatory_7day", label: "₹5,000 / 7-Day Loan (Predatory ~2,235% APR)" },
-  { id: "sample_predatory_15day", label: "₹10,000 / 15-Day Loan (Deductions ₹2,000)" },
-  { id: "sample_quick_3000", label: "₹3,000 / 10-Day Loan (Deductions ₹600)" },
-  { id: "sample_safe_bank", label: "₹20,000 / 12-Month EMI ₹1,900 (Safe Bank ~13% APR)" },
-  { id: "sample_risky_nbfe", label: "₹50,000 / 24-Month EMI ₹2,750 (Risky NBFC)" },
-  { id: "sample_100k_safe", label: "₹100,000 / 36-Month Standard Bank Loan" },
+  { id: "sample_predatory_7day", label: "₹5,000 / 7-Day Loan (Predatory ~2,235% APR)", img: "/samples/sample_1_predatory_7day.png" },
+  { id: "sample_predatory_15day", label: "₹10,000 / 15-Day Loan (Deductions ₹2,000)", img: "/samples/sample_2_predatory_15day.png" },
+  { id: "sample_quick_3000", label: "₹3,000 / 10-Day Loan (Deductions ₹600)", img: "/samples/sample_3_predatory_10day.png" },
+  { id: "sample_safe_bank_emi", label: "₹20,000 / 12-Month EMI ₹1,900 (Safe Bank ~13.5% APR)", img: "/samples/sample_4_safe_bank_emi.png" },
+  { id: "sample_nbfc_personal", label: "₹50,000 / 24-Month EMI ₹2,750 (Regulated NBFC)", img: "/samples/sample_5_nbfc_personal.png" },
+  { id: "sample_short_term_emi", label: "₹15,000 / 3-Month EMI ₹5,300 (Fee ₹450)", img: "/samples/sample_6_short_term_emi.png" },
+  { id: "sample_predatory_14day", label: "₹8,000 / 14-Day Loan (Deductions ₹1,500)", img: "/samples/sample_7_predatory_14day.png" },
+  { id: "sample_100k_safe", label: "₹100,000 / 36-Month Prime Bank Loan", img: "/samples/sample_8_safe_commercial_bank.png" },
 ];
 
 export default function UploadBox({ onFileSelect, onSampleSelect, isLoading }: UploadBoxProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [dragOver, setDragOver] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [previewImg, setPreviewImg] = useState<string | null>(null);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -93,13 +96,23 @@ export default function UploadBox({ onFileSelect, onSampleSelect, isLoading }: U
               <span>Selected: {selectedFileName}</span>
             </div>
           )}
+          {previewImg && (
+            <div className="mt-2 p-1.5 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 max-w-xs mx-auto">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={previewImg}
+                alt="Selected loan sample screenshot preview"
+                className="w-full h-auto rounded-lg shadow-sm max-h-40 object-contain mx-auto"
+              />
+            </div>
+          )}
         </div>
       </div>
 
       {/* Preset Synthetic Sample Chips */}
       <div className="space-y-2">
         <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block">
-          Ya Synthetic Sample Screenshot Try Karein:
+          Ya Synthetic Sample Screenshot Try Karein (All 8 Test Cases):
         </span>
         <div className="flex flex-wrap gap-2">
           {SAMPLES.map((sample) => (
@@ -109,6 +122,7 @@ export default function UploadBox({ onFileSelect, onSampleSelect, isLoading }: U
               disabled={isLoading}
               onClick={() => {
                 setSelectedFileName(sample.label);
+                setPreviewImg(sample.img);
                 onSampleSelect(sample.id);
               }}
               className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-teal-950/30 hover:text-teal-700 dark:hover:text-teal-300 border border-slate-200 dark:border-slate-700 transition-colors"

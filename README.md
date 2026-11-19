@@ -173,3 +173,4 @@ Before deploying to production, verify regulatory references:
 ## 8. License & Privacy
 - **License:** MIT License. Built for citizen protection.
 - **Privacy:** 100% ephemeral processing. No user data, screenshots, or transcripts are stored on servers.
+

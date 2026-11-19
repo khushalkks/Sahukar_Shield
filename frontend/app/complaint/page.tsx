@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   FileText,
@@ -22,7 +22,7 @@ import { createComplaint, getPdfDownloadUrl } from "../../lib/api";
 import { ComplaintResponse, TimelineEvent } from "../../lib/types";
 import { useI18n } from "../../lib/i18n";
 
-export default function ComplaintPage() {
+function ComplaintWizardContent() {
   const { t, lang } = useI18n();
   const searchParams = useSearchParams();
 
@@ -498,3 +498,18 @@ export default function ComplaintPage() {
     </div>
   );
 }
+
+export default function ComplaintPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="p-16 text-center text-sm font-semibold text-slate-500">
+          Loading Complaint Wizard...
+        </div>
+      }
+    >
+      <ComplaintWizardContent />
+    </Suspense>
+  );
+}
+

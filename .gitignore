@@ -21,3 +21,4 @@ dist/
 *.log
 frontend/.env.local
 .env.local
+

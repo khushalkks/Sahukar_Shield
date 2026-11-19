@@ -88,7 +88,23 @@ export default function TrueCostPage() {
       setRepaymentAmount(10000);
       setTenureDays(15);
       setKfsAprShown(false);
-    } else if (sampleId === "sample_safe_bank") {
+      setKfsFeesItemised(false);
+      setKfsCoolingOff(false);
+      setKfsGrievanceOfficer(false);
+    } else if (sampleId === "sample_quick_3000") {
+      setPrincipal(3000);
+      setProcessingFee(600);
+      setGstOnFee(0);
+      setOtherDeductions(0);
+      setInsuranceFee(0);
+      setDisbursedAmount(2400);
+      setRepaymentAmount(3000);
+      setTenureDays(10);
+      setKfsAprShown(false);
+      setKfsFeesItemised(false);
+      setKfsCoolingOff(false);
+      setKfsGrievanceOfficer(false);
+    } else if (sampleId === "sample_safe_bank_emi" || sampleId === "sample_safe_bank") {
       setPrincipal(20000);
       setProcessingFee(300);
       setGstOnFee(54);
@@ -101,15 +117,58 @@ export default function TrueCostPage() {
       setKfsFeesItemised(true);
       setKfsCoolingOff(true);
       setKfsGrievanceOfficer(true);
-    } else {
-      setPrincipal(3000);
-      setProcessingFee(600);
+    } else if (sampleId === "sample_nbfc_personal") {
+      setPrincipal(50000);
+      setProcessingFee(1000);
+      setGstOnFee(180);
+      setOtherDeductions(0);
+      setInsuranceFee(0);
+      setDisbursedAmount(48820);
+      setRepaymentAmount(66000); // 24 * 2750
+      setTenureDays(730);
+      setKfsAprShown(true);
+      setKfsFeesItemised(true);
+      setKfsCoolingOff(true);
+      setKfsGrievanceOfficer(true);
+    } else if (sampleId === "sample_short_term_emi") {
+      setPrincipal(15000);
+      setProcessingFee(450);
       setGstOnFee(0);
       setOtherDeductions(0);
       setInsuranceFee(0);
-      setDisbursedAmount(2400);
-      setRepaymentAmount(3000);
-      setTenureDays(10);
+      setDisbursedAmount(14550);
+      setRepaymentAmount(15900); // 3 * 5300
+      setTenureDays(90);
+      setKfsAprShown(true);
+      setKfsFeesItemised(true);
+      setKfsCoolingOff(false);
+      setKfsGrievanceOfficer(true);
+    } else if (sampleId === "sample_predatory_14day") {
+      setPrincipal(8000);
+      setProcessingFee(1500);
+      setGstOnFee(0);
+      setOtherDeductions(0);
+      setInsuranceFee(0);
+      setDisbursedAmount(6500);
+      setRepaymentAmount(8000);
+      setTenureDays(14);
+      setKfsAprShown(false);
+      setKfsFeesItemised(false);
+      setKfsCoolingOff(false);
+      setKfsGrievanceOfficer(false);
+    } else if (sampleId === "sample_100k_safe") {
+      setPrincipal(100000);
+      setProcessingFee(1500);
+      setGstOnFee(0);
+      setOtherDeductions(0);
+      setInsuranceFee(0);
+      setDisbursedAmount(98500);
+      setRepaymentAmount(117000); // 36 * 3250
+      setTenureDays(1095);
+      setKfsAprShown(true);
+      setKfsFeesItemised(true);
+      setKfsCoolingOff(true);
+      setKfsGrievanceOfficer(true);
     }
   };
 

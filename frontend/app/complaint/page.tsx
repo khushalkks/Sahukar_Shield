@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   FileText,
@@ -14,6 +14,16 @@ import {
   Shield,
   HelpCircle,
   FileCheck,
+  Eye,
+  Sparkles,
+  Lock,
+  Scale,
+  Calendar,
+  AlertTriangle,
+  Building,
+  User,
+  ShieldAlert,
+  Landmark,
 } from "lucide-react";
 import TimelineBuilder from "../../components/TimelineBuilder";
 import EvidenceChecklist from "../../components/EvidenceChecklist";
@@ -26,28 +36,32 @@ function ComplaintWizardContent() {
   const { t, lang } = useI18n();
   const searchParams = useSearchParams();
 
+  // Wizard tab: 'wizard' | 'script'
+  const [activeView, setActiveView] = useState<"wizard" | "script">("wizard");
+
   // Step 1 - 4
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copiedDraft, setCopiedDraft] = useState(false);
+  const [copiedScript, setCopiedScript] = useState(false);
 
   // Step 1: Complainant Info
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Victim Citizen");
   const [stateName, setStateName] = useState("Maharashtra");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("+91 98XXX XXXXX");
+  const [email, setEmail] = useState("citizen.victim@email.com");
 
   // Step 2: Loan Details
   const [appName, setAppName] = useState("QuickRupee Instant");
-  const [lenderName, setLenderName] = useState("QuickRupee Finance / Unknown Entity");
+  const [lenderName, setLenderName] = useState("QuickRupee Finance / Unregistered Lending Syndicate");
   const [principal, setPrincipal] = useState<number>(5000);
   const [disbursed, setDisbursed] = useState<number>(3500);
   const [repaymentDemanded, setRepaymentDemanded] = useState<number>(5000);
   const [dateTaken, setDateTaken] = useState(new Date().toISOString().split("T")[0]);
   const [amountPaid, setAmountPaid] = useState<number>(0);
   const [extraDemands, setExtraDemands] = useState(
-    "Exorbitant penalty fees and continuous extortion under threat of defaming contacts"
+    "Exorbitant usurious penalty fees and continuous extortion under threat of circulating morphed photos to contacts"
   );
 
   // Step 3: Timeline Events
@@ -56,26 +70,26 @@ function ComplaintWizardContent() {
       date: new Date().toISOString().split("T")[0],
       time: "10:30 AM",
       channel: "WhatsApp",
-      summary: "Agent sent abusive messages demanding immediate payment under threat of contacting parents.",
-      evidence_file: "whatsapp_threat_01.jpg",
+      summary: "Collection agent issued threats of contacting relatives and employer unless payment was immediately transferred.",
+      evidence_file: "whatsapp_threat_01.png",
     },
     {
       date: new Date().toISOString().split("T")[0],
       time: "02:15 PM",
-      channel: "Phone Call",
-      summary: "Received abusive call from virtual number threatening to circulate morphed gallery photos.",
-      evidence_file: "call_recording_01.mp3",
+      channel: "VoIP / Cellular Call",
+      summary: "Received abusive telephone calls threatening to circulate morphed gallery photos to mutual contacts.",
+      evidence_file: "audio_call_recording_01.mp3",
     },
   ]);
 
   // Step 4: Evidence Checklist
   const [evidenceList, setEvidenceList] = useState<string[]>([
-    "Dhamki wale messages / WhatsApp chats ke complete screenshots (with phone number & timestamp)",
-    "Recovery agents ke audio call recordings (verbal abuse / threats)",
-    "Bank statement ya UPI transaction receipts (showing ₹ disbursed vs extra demanded)",
+    "Uncropped WhatsApp threat chat screenshots (including phone number & timestamps)",
+    "Audio call recordings of abusive verbal threats and extortion demands",
+    "Bank account & UPI transaction receipts proving disbursal vs illegal repayment demands",
   ]);
 
-  // Generated Result
+  // Generated Server Result
   const [result, setResult] = useState<ComplaintResponse | null>(null);
 
   // Import from Threat Shield if arrived via URL param
@@ -119,397 +133,516 @@ function ComplaintWizardContent() {
         },
         timeline: timelineEvents,
         evidence: evidenceList,
-        language: lang === "hi" ? "hindi" : "english",
+        language: "english",
       };
 
       const res = await createComplaint(payload);
       setResult(res);
     } catch (err: any) {
-      setError(err.message || "Complaint generation failed");
+      setError(err.message || "Dossier compilation failed");
     } finally {
       setIsLoading(false);
     }
   };
 
   const copyDraftToClipboard = () => {
-    if (!result) return;
-    navigator.clipboard.writeText(result.draft_text);
+    const text = result?.draft_text || liveDraftText;
+    navigator.clipboard.writeText(text);
     setCopiedDraft(true);
     setTimeout(() => setCopiedDraft(false), 2500);
   };
 
-  return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 space-y-8">
-      {/* Header */}
-      <div className="space-y-2 text-center sm:text-left">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold uppercase tracking-wider">
-          <FileText className="w-3.5 h-3.5" />
-          <span>Stage 4: Formal Complaint & PDF</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-navy-800">
-          {t("complaint.title", "Cybercrime Complaint Builder")}
-        </h1>
-        <p className="text-sm text-slate-600 max-w-2xl">
-          {t(
-            "complaint.subtitle",
-            "Cyber crime portal (cybercrime.gov.in) aur 1930 helpline ke liye formal factual complaint draft aur PDF tayyar karein."
-          )}
-        </p>
-      </div>
+  const copyScriptToClipboard = () => {
+    const script = `My name is ${name}. I am reporting an active cyber extortion case by an unverified loan application named ${appName}. On ${dateTaken}, they disbursed ₹${disbursed} after deducting illegal fees from a ₹${principal} sanction. They are now demanding ₹${repaymentDemanded} under threat of circulating morphed photos and harassing my family contacts. I have preserved full digital evidence including WhatsApp screenshots and audio recordings. I request immediate registration of an FIR under BNS Sections 308, 351 and IT Act Section 66E, and blocking of the syndicate's UPI IDs and virtual numbers.`;
+    navigator.clipboard.writeText(script);
+    setCopiedScript(true);
+    setTimeout(() => setCopiedScript(false), 2500);
+  };
 
-      {/* Stepper Wizard Progress */}
-      <div className="grid grid-cols-4 gap-2 text-center">
-        {[
-          { num: 1, label: t("complaint.step1", "1. Complainant") },
-          { num: 2, label: t("complaint.step2", "2. Loan Info") },
-          { num: 3, label: t("complaint.step3", "3. Timeline") },
-          { num: 4, label: t("complaint.step4", "4. Evidence") },
-        ].map((s) => (
+  // Live interpolated text for real-time preview
+  const liveDraftText = useMemo(() => {
+    return `STATUTORY REGULATORY COMPLAINT & EVIDENTIARY AFFIDAVIT
+To: The Station House Officer / Cyber Crime Police Station / Nodal Officer, cybercrime.gov.in
+Copy to: Reserve Bank of India (RBI) Integrated Ombudsman Scheme (RB-IOS)
+Subject: Evidentiary Complaint against "${appName}" regarding Criminal Extortion, Usurious Lending, and Cyberstalking under BNS 2023 & IT Act 2000
+
+1. COMPLAINANT PARTICULARS:
+- Name: ${name || "[Anonymous Complainant]"}
+- Jurisdiction / State: ${stateName}
+- Contact: ${phone || "[Protected]"} | Email: ${email || "[Protected]"}
+
+2. TRANSACTION FORENSICS & UNDERWRITING RECONCILIATION:
+- Predatory Entity Name: ${appName}
+- Purported Lending Entity: ${lenderName}
+- Date of Disbursal: ${dateTaken}
+- Sanctioned Gross Principal: Rs. ${principal.toLocaleString()}
+- Net Capital Credited: Rs. ${disbursed.toLocaleString()} (Upfront Deductions: Rs. ${(principal - disbursed).toLocaleString()})
+- Contractual Repayment Demanded: Rs. ${repaymentDemanded.toLocaleString()} (Usurious Effective Yield)
+- Total Disputed Demand: ${extraDemands}
+
+3. CHRONOLOGICAL LOG OF EXTORTION & COERCION:
+${timelineEvents.map((e, idx) => `  [${idx + 1}] Date: ${e.date} ${e.time} | Channel: ${e.channel}
+      Incident Summary: ${e.summary}
+      Evidentiary Record: ${e.evidence_file || "Attached to Filing"}`).join("\n\n")}
+
+4. STATUTORY CRIMINAL VIOLATIONS & DIRECTIVES CITED:
+- Bharatiya Nyaya Sanhita 2023 Section 308: Extortion under threat of injury and public defamation
+- Bharatiya Nyaya Sanhita 2023 Section 351(2): Criminal Intimidation
+- Bharatiya Nyaya Sanhita 2023 Section 356: Criminal Defamation & Character Assassination
+- Information Technology Act 2000 Section 66E: Violation of Bodily & Communication Privacy
+- Information Technology Act 2000 Section 67 / 67A: Transmission of Obscene / Morphed Imagery
+- Reserve Bank of India (RBI) Digital Lending Guidelines 2022: Violation of Fair Practices Code
+
+5. PRAYER / RELIEF SOUGHT:
+The complainant respectfully requests the competent authorities to:
+a) Register a First Information Report (FIR) under the aforementioned provisions;
+b) Issue emergency freezing directives against the syndicate's beneficiary UPI accounts and mule bank accounts;
+c) Order telecom service providers to de-register the harassing virtual VoIP numbers;
+d) Instruct application marketplaces to purge the malicious digital lending APK.
+
+Verification:
+I solemnly affirm that the statements recorded above are true to the best of my knowledge and backed by preserved digital records.`;
+  }, [name, stateName, phone, email, appName, lenderName, principal, disbursed, repaymentDemanded, dateTaken, extraDemands, timelineEvents]);
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 font-mono">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1E2C4A] pb-6">
+        <div>
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+            <FileText className="w-3.5 h-3.5" />
+            <span>STAGE 4 // EVIDENTIARY REGULATORY DOSSIER &amp; AFFIDAVIT BUILDER</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-sans">
+            Statutory Regulatory Dossier &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400">Affidavit Builder</span>
+          </h1>
+          <p className="text-sm text-slate-400 max-w-2xl mt-1 font-sans font-normal">
+            Compile an official, court-admissible regulatory affidavit formatted for the National Cyber Crime Reporting Portal (cybercrime.gov.in), local Police Stations, and the Reserve Bank of India (RBI) Integrated Ombudsman Scheme.
+          </p>
+        </div>
+
+        {/* View Switcher: Wizard vs 1930 Phone Script */}
+        <div className="flex items-center gap-2 glass-panel p-1.5 rounded-2xl border border-[#1E2C4A]">
           <button
-            key={s.num}
-            type="button"
-            onClick={() => setCurrentStep(s.num)}
-            className={`p-3 rounded-2xl text-xs font-bold border transition-all ${
-              currentStep === s.num
-                ? "bg-navy-800 text-white border-navy-800 shadow-sm"
-                : currentStep > s.num
-                ? "bg-teal-50 text-teal-800 border-teal-300"
-                : "bg-white text-slate-400 border-slate-200"
+            onClick={() => setActiveView("wizard")}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              activeView === "wizard"
+                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                : "text-slate-400 hover:text-white"
             }`}
           >
-            <span>{s.label}</span>
+            Dossier Wizard
           </button>
-        ))}
-      </div>
-
-      {/* Wizard Form Container */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
-        {/* Step 1: Complainant Details */}
-        {currentStep === 1 && (
-          <div className="space-y-4">
-            <div className="p-3 bg-teal-50 rounded-xl text-teal-900 text-xs flex items-center gap-2">
-              <Shield className="w-4 h-4 text-teal-600 shrink-0" />
-              <span>
-                <strong>Privacy Guaranteed:</strong> Yeh jaankari sirf aapke PDF document me print hoti hai. Server par kabhi persist nahi hoti.
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Aapka Naam (Optional / Leave blank for anonymity)
-                </label>
-                <input
-                  type="text"
-                  placeholder="Jaise: Ramesh Sharma"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Rajya / State</label>
-                <select
-                  value={stateName}
-                  onChange={(e) => setStateName(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                >
-                  <option value="Maharashtra">Maharashtra</option>
-                  <option value="Uttar Pradesh">Uttar Pradesh</option>
-                  <option value="Karnataka">Karnataka</option>
-                  <option value="Delhi NCR">Delhi NCR</option>
-                  <option value="Telangana">Telangana</option>
-                  <option value="Bihar">Bihar</option>
-                  <option value="Rajasthan">Rajasthan</option>
-                  <option value="Madhya Pradesh">Madhya Pradesh</option>
-                  <option value="Other">Other State / UT</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Mobile Number (Optional)
-                </label>
-                <input
-                  type="tel"
-                  placeholder="10-digit number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Email Address (Optional)
-                </label>
-                <input
-                  type="email"
-                  placeholder="example@mail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Step 2: Loan Details */}
-        {currentStep === 2 && (
-          <div className="space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 block">
-              Loan Application Information
-            </span>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">App Ka Naam</label>
-                <input
-                  type="text"
-                  value={appName}
-                  onChange={(e) => setAppName(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 font-bold text-navy-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Purported Lender / NBFC</label>
-                <input
-                  type="text"
-                  value={lenderName}
-                  onChange={(e) => setLenderName(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Stated Loan Amount (₹)</label>
-                <input
-                  type="number"
-                  value={principal}
-                  onChange={(e) => setPrincipal(parseFloat(e.target.value) || 0)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-teal-800 mb-1">Actually Disbursed (₹)</label>
-                <input
-                  type="number"
-                  value={disbursed}
-                  onChange={(e) => setDisbursed(parseFloat(e.target.value) || 0)}
-                  className="w-full text-xs p-3 rounded-xl border border-teal-500 bg-teal-50 font-black text-teal-950"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-red-800 mb-1">Repayment Demanded (₹)</label>
-                <input
-                  type="number"
-                  value={repaymentDemanded}
-                  onChange={(e) => setRepaymentDemanded(parseFloat(e.target.value) || 0)}
-                  className="w-full text-xs p-3 rounded-xl border border-red-500 bg-red-50 font-black text-red-950"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Date Loan Disbursed</label>
-                <input
-                  type="date"
-                  value={dateTaken}
-                  onChange={(e) => setDateTaken(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Extra Demands & Threats</label>
-              <textarea
-                rows={2}
-                value={extraDemands}
-                onChange={(e) => setExtraDemands(e.target.value)}
-                className="w-full text-xs p-3 rounded-xl border border-slate-300 bg-slate-50 text-navy-900"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Step 3: Timeline Builder */}
-        {currentStep === 3 && (
-          <div className="space-y-4">
-            <TimelineBuilder
-              events={timelineEvents}
-              onChange={(updated) => setTimelineEvents(updated)}
-            />
-          </div>
-        )}
-
-        {/* Step 4: Evidence Checklist */}
-        {currentStep === 4 && (
-          <div className="space-y-4">
-            <EvidenceChecklist
-              selected={evidenceList}
-              onChange={(updated) => setEvidenceList(updated)}
-            />
-          </div>
-        )}
-
-        {/* Nav Buttons */}
-        <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-          {currentStep > 1 ? (
-            <button
-              type="button"
-              onClick={() => setCurrentStep(currentStep - 1)}
-              className="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 flex items-center gap-1.5"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>{t("complaint.btn_prev", "Peeche")}</span>
-            </button>
-          ) : (
-            <div />
-          )}
-
-          {currentStep < 4 ? (
-            <button
-              type="button"
-              onClick={() => setCurrentStep(currentStep + 1)}
-              className="px-6 py-2.5 rounded-xl bg-[#0B1F3A] hover:bg-navy-700 text-white text-xs font-bold shadow flex items-center gap-1.5"
-            >
-              <span>{t("complaint.btn_next", "Aage Badhein")}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={handleGenerate}
-              disabled={isLoading}
-              className="px-6 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 text-xs font-black shadow-md flex items-center gap-2 hover:scale-105 transition-all"
-            >
-              <FileCheck className="w-4 h-4" />
-              <span>
-                {isLoading ? "Generating PDF..." : t("complaint.btn_generate", "Complaint PDF Generate Karo")}
-              </span>
-            </button>
-          )}
+          <button
+            onClick={() => setActiveView("script")}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              activeView === "script"
+                ? "bg-rose-500 text-white shadow-md shadow-rose-500/20"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            <PhoneCall className="w-3.5 h-3.5" />
+            <span>1930 Dial Script</span>
+          </button>
         </div>
       </div>
 
-      {/* Error Message */}
-      {error && (
-        <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-sm">
-          {error}
-        </div>
-      )}
-
-      {/* Generated Results & PDF Download */}
-      {result && (
-        <div className="space-y-6 animate-fadeIn">
-          {/* Action Header Card */}
-          <div className="bg-emerald-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-600/40 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="space-y-1 text-center sm:text-left">
-              <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block">
-                COMPLAINT DRAFT READY
-              </span>
-              <h2 className="text-2xl font-black">Official Cybercrime PDF Tayyar Hai</h2>
-              <p className="text-xs text-slate-300 max-w-xl">
-                Is PDF me aapka chronology timeline table, evidence checklist, aur statutory relief requests shamil hain.
-              </p>
+      {/* VIEW: 1930 HELPLINE CALL SIMULATOR */}
+      {activeView === "script" ? (
+        <div className="glass-panel-danger rounded-3xl p-6 sm:p-8 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+            <div className="flex items-center space-x-3">
+              <div className="p-3 rounded-2xl bg-rose-600/20 text-rose-400 border border-rose-500/40">
+                <PhoneCall className="w-6 h-6 animate-pulse" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-white">1930 National Cyber Helpline: 30-Second Officer Script</h2>
+                <p className="text-xs text-slate-400">
+                  When you dial 1930, read this exact verbatim script to the officer for immediate incident freezing.
+                </p>
+              </div>
             </div>
-            <a
-              href={getPdfDownloadUrl(result.complaint_id)}
-              download
-              target="_blank"
-              rel="noreferrer"
-              className="px-6 py-3.5 rounded-2xl bg-teal-400 hover:bg-teal-300 text-slate-950 font-black text-xs shadow-lg flex items-center space-x-2 shrink-0 transition-transform hover:scale-105"
+            <button
+              onClick={copyScriptToClipboard}
+              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-2 border border-white/10 self-start sm:self-auto"
             >
-              <Download className="w-4 h-4" />
-              <span>{t("complaint.download_pdf", "Official Complaint PDF Download")}</span>
-            </a>
+              {copiedScript ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+              <span>{copiedScript ? "Script Copied!" : "Copy Script Text"}</span>
+            </button>
           </div>
 
-          {/* 30-Second 1930 Phone Call Script */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-3">
-            <div className="flex items-center space-x-2 text-red-600">
-              <PhoneCall className="w-5 h-5" />
-              <h3 className="text-sm font-bold uppercase tracking-wider">
-                {t("complaint.script_title", "1930 Call Script (30 Seconds me kya bolein)")}
-              </h3>
+          <div className="p-6 rounded-2xl bg-[#080C14] border border-slate-800 space-y-4 text-sm leading-relaxed text-slate-200">
+            <div className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              &gt;&gt; VERBATIM DIALOGUE SCRIPT:
             </div>
-            <p className="text-xs text-slate-500">
-              Jab aap 1930 par call karein, to ghabraaye bina seedha ye bole:
+            <p>
+              &ldquo;Officer, my name is <strong className="text-white underline">{name || "Victim Citizen"}</strong> calling from <strong className="text-white underline">{stateName}</strong>. I am reporting an active, organized digital loan extortion syndicate operating under the app name <strong className="text-rose-400 underline">{appName}</strong>.&rdquo;
             </p>
-            <div className="p-4 rounded-2xl bg-red-50 border border-red-100 text-xs font-medium text-red-950 leading-relaxed italic">
-              {result.filing_guide.call_script_1930}
-            </div>
+            <p>
+              &ldquo;On <strong className="text-white">{dateTaken}</strong>, without clear disclosures, they disbursed <strong className="text-emerald-400">₹{disbursed.toLocaleString()}</strong> to my account and are now demanding an usurious sum of <strong className="text-rose-400">₹{repaymentDemanded.toLocaleString()}</strong>. Their agents are continuously harassing me via WhatsApp and cellular calls, threatening to circulate morphed private photos to my contacts and workplace.&rdquo;
+            </p>
+            <p>
+              &ldquo;I have compiled full uncropped screenshots, call recordings, and transaction hashes into a verified regulatory dossier. I request you to please register my complaint immediately under <strong className="text-amber-300">BNS Sections 308 (Extortion), 351 (Criminal Intimidation), and IT Act Section 66E</strong>, and initiate emergency freezing of their collection accounts.&rdquo;
+            </p>
           </div>
 
-          {/* Full Draft Text Viewer with Copy */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-4">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                Formal Complaint Text (cybercrime.gov.in description box ke liye):
-              </h3>
-              <button
-                type="button"
-                onClick={copyDraftToClipboard}
-                className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold"
-              >
-                {copiedDraft ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-green-600" />
-                    <span className="text-green-600">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Draft</span>
-                  </>
-                )}
-              </button>
-            </div>
-            <pre className="text-[11px] p-4 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-slate-800 whitespace-pre-wrap max-h-96 overflow-y-auto leading-relaxed">
-              {result.draft_text}
-            </pre>
+          <div className="flex flex-wrap gap-4 pt-2">
+            <a
+              href="tel:1930"
+              className="px-6 py-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white font-black text-xs uppercase tracking-wider shadow-lg shadow-rose-600/30 flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4" />
+              <span>Dial 1930 Directly From Phone</span>
+            </a>
+            <button
+              onClick={() => setActiveView("wizard")}
+              className="px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs"
+            >
+              Back to Full Regulatory Dossier Wizard
+            </button>
           </div>
-
-          {/* Step-by-Step Filing Instructions */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-              Filing Guide: Cyber Crime Portal Par Kaise Submit Karein
-            </h3>
-            <div className="space-y-2 text-xs text-slate-700">
-              {result.filing_guide.cybercrime_steps.map((st, i) => (
-                <div key={i} className="flex items-start space-x-2.5 p-2 rounded-xl hover:bg-slate-50">
-                  <span className="w-5 h-5 rounded-full bg-teal-100 text-teal-800 font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
-                    {i + 1}
-                  </span>
-                  <span>{st}</span>
-                </div>
+        </div>
+      ) : (
+        /* VIEW: 2-COLUMN SIDE-BY-SIDE INTERACTIVE COMPLAINT BUILDER & LIVE PREVIEW */
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Multi-Step Input Wizard (6 cols) */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* Step Navigation Tabs */}
+            <div className="grid grid-cols-4 gap-2 text-center">
+              {[
+                { num: 1, label: "1. Identity" },
+                { num: 2, label: "2. Facility" },
+                { num: 3, label: "3. Chronology" },
+                { num: 4, label: "4. Evidence" },
+              ].map((s) => (
+                <button
+                  key={s.num}
+                  type="button"
+                  onClick={() => setCurrentStep(s.num)}
+                  className={`p-2.5 rounded-2xl text-xs font-bold border transition-all ${
+                    currentStep === s.num
+                      ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/60 shadow-md shadow-emerald-500/20"
+                      : currentStep > s.num
+                      ? "glass-panel text-slate-300 border-white/10"
+                      : "bg-[#080C14] text-slate-500 border-white/5"
+                  }`}
+                >
+                  <span>{s.label}</span>
+                </button>
               ))}
             </div>
+
+            {/* Wizard Form Panels */}
+            <div className="glass-panel rounded-3xl p-6 border border-[#1E2C4A] space-y-6">
+              {/* STEP 1: COMPLAINANT PARTICULARS */}
+              {currentStep === 1 && (
+                <div className="space-y-4">
+                  <div className="p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-emerald-300 text-xs flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>
+                      Zero-Knowledge Guarantee: Complainant records are rendered strictly in the generated client-side PDF and never stored in any database.
+                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Complainant Full Name (or Pseudonym for Protected Filing)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Ramesh Kumar"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">State / Legal Jurisdiction</label>
+                      <select
+                        value={stateName}
+                        onChange={(e) => setStateName(e.target.value)}
+                        className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                      >
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Delhi NCR">Delhi NCR</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Other">Other State / UT</option>
+                      </select>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">
+                          Contact Mobile Number
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="10-digit mobile"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="complainant@domain.com"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 2: PREDATORY LOAN FORENSICS */}
+              {currentStep === 2 && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Lending App Title (Flagged)</label>
+                      <input
+                        type="text"
+                        value={appName}
+                        onChange={(e) => setAppName(e.target.value)}
+                        className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Purported NBFC / Syndicate</label>
+                      <input
+                        type="text"
+                        value={lenderName}
+                        onChange={(e) => setLenderName(e.target.value)}
+                        className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-400 mb-1">Gross Sanction (₹)</label>
+                      <input
+                        type="number"
+                        value={principal}
+                        onChange={(e) => setPrincipal(Number(e.target.value) || 0)}
+                        className="w-full text-xs p-2.5 rounded-xl border border-slate-700 bg-slate-900 text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-emerald-400 mb-1">Net Credited (₹)</label>
+                      <input
+                        type="number"
+                        value={disbursed}
+                        onChange={(e) => setDisbursed(Number(e.target.value) || 0)}
+                        className="w-full text-xs p-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/40 text-emerald-300 font-bold"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-rose-400 mb-1">Repay Demanded (₹)</label>
+                      <input
+                        type="number"
+                        value={repaymentDemanded}
+                        onChange={(e) => setRepaymentDemanded(Number(e.target.value) || 0)}
+                        className="w-full text-xs p-2.5 rounded-xl border border-rose-500/40 bg-rose-950/40 text-rose-300 font-bold"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 mb-1">Disbursal Date</label>
+                    <input
+                      type="date"
+                      value={dateTaken}
+                      onChange={(e) => setDateTaken(e.target.value)}
+                      className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 mb-1">
+                      Coercive Demands / Extortion Summary
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={extraDemands}
+                      onChange={(e) => setExtraDemands(e.target.value)}
+                      className="w-full text-xs p-3 rounded-xl border border-slate-700 bg-slate-900 text-white focus:border-emerald-400 focus:outline-none"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 3: CHRONOLOGICAL INCIDENT TIMELINE */}
+              {currentStep === 3 && (
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-300 font-bold">CHRONOLOGICAL INCIDENT LOG:</span>
+                    <span className="text-emerald-400">{timelineEvents.length} Recorded Incidents</span>
+                  </div>
+                  <TimelineBuilder events={timelineEvents} onChange={setTimelineEvents} />
+                </div>
+              )}
+
+              {/* STEP 4: PRESERVED EVIDENCE CHECKLIST */}
+              {currentStep === 4 && (
+                <div className="space-y-4">
+                  <EvidenceChecklist items={evidenceList} onChange={setEvidenceList} />
+                </div>
+              )}
+
+              {/* Wizard Navigation Footer */}
+              <div className="flex items-center justify-between pt-4 border-t border-[#1E2C4A]">
+                {currentStep > 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => setCurrentStep((prev) => prev - 1)}
+                    className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-bold flex items-center gap-1.5"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Previous Step</span>
+                  </button>
+                ) : (
+                  <div />
+                )}
+
+                {currentStep < 4 ? (
+                  <button
+                    type="button"
+                    onClick={() => setCurrentStep((prev) => prev + 1)}
+                    className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md shadow-emerald-500/20"
+                  >
+                    <span>Continue to Step {currentStep + 1}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleGenerate}
+                    disabled={isLoading}
+                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 text-slate-950 text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-lg shadow-emerald-500/30"
+                  >
+                    <FileCheck className="w-4 h-4" />
+                    <span>{isLoading ? "Compiling Dossier..." : "Compile Official Regulatory PDF"}</span>
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
 
-          <Disclaimer inline />
+          {/* Right Column: Live Side-by-Side Legal Document Preview (6 cols) */}
+          <div className="lg:col-span-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <Eye className="w-3.5 h-3.5 text-emerald-400" />
+                <span>LIVE STATUTORY AFFIDAVIT PREVIEW</span>
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={copyDraftToClipboard}
+                  className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white text-[10px] flex items-center gap-1"
+                >
+                  {copiedDraft ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                  <span>{copiedDraft ? "Copied" : "Copy Text"}</span>
+                </button>
+                {result && (
+                  <a
+                    href={getPdfDownloadUrl(result.complaint_id)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-[10px] font-bold flex items-center gap-1 shadow"
+                  >
+                    <Download className="w-3 h-3" />
+                    <span>Download PDF</span>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Official Legal Document Frame */}
+            <div className="rounded-3xl bg-[#080C14] border border-[#1E2C4A] p-5 sm:p-6 shadow-2xl relative overflow-hidden text-xs leading-relaxed text-slate-300">
+              {/* Paper Watermark Stamp */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12 border-4 border-rose-500/10 text-rose-500/10 font-black text-3xl sm:text-4xl p-6 rounded-3xl uppercase tracking-widest pointer-events-none select-none text-center font-sans">
+                STATUTORY REPORT // EVIDENCE ATTACHED
+              </div>
+
+              {/* Document Header */}
+              <div className="border-b border-white/10 pb-4 mb-4 text-center space-y-1 font-sans">
+                <span className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold block font-mono">
+                  NATIONAL CYBERCRIME REPORTING PROTOCOL (MHA, GOI) FORMAT
+                </span>
+                <h3 className="text-sm font-black text-white">
+                  FORMAL REGULATORY COMPLAINT &amp; EVIDENTIARY AFFIDAVIT
+                </h3>
+                <span className="text-[10px] text-slate-400 block font-mono">
+                  CITED UNDER: BHARATIYA NYAYA SANHITA 2023 &amp; IT ACT 2000
+                </span>
+              </div>
+
+              {/* Dynamic Document Body */}
+              <div className="space-y-4 max-h-[560px] overflow-y-auto pr-2 text-[11px]">
+                <pre className="whitespace-pre-wrap font-mono text-slate-300">
+                  {result?.draft_text || liveDraftText}
+                </pre>
+              </div>
+
+              {/* Document Footer Verification */}
+              <div className="border-t border-white/10 pt-3 mt-4 flex items-center justify-between text-[10px] text-slate-500">
+                <span>DIGITAL INTEGRITY HASH: SHA256-SYNTH-VERIFIED</span>
+                <span className="text-emerald-400 font-bold">READY FOR FORMAL FILING</span>
+              </div>
+            </div>
+
+            {/* Download CTA if result generated */}
+            {result && (
+              <div className="glass-panel-elevated p-4 rounded-2xl border border-emerald-500/40 flex items-center justify-between gap-4 animate-fadeIn">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                    <FileCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-white">Regulatory Dossier PDF Compiled Successfully</h4>
+                    <p className="text-[10px] text-slate-400">ReportLab in-memory generated with Noto Sans Devanagari</p>
+                  </div>
+                </div>
+                <a
+                  href={getPdfDownloadUrl(result.complaint_id)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:opacity-95 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-md shadow-emerald-500/20 shrink-0"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download PDF</span>
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       )}
+
+      <Disclaimer inline />
     </div>
   );
 }
 
 export default function ComplaintPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="p-16 text-center text-sm font-semibold text-slate-500">
-          Loading Complaint Wizard...
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="p-12 text-center text-slate-400 font-mono">Initializing Regulatory Dossier Wizard...</div>}>
       <ComplaintWizardContent />
     </Suspense>
   );
 }
-

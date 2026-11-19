@@ -62,3 +62,4 @@ def test_extraction_field_accuracy():
     accuracy = (correct_fields / total_fields) * 100
     print(f"\nExtraction Field Accuracy: {correct_fields}/{total_fields} ({accuracy:.1f}%)")
     assert accuracy >= 90.0, f"Expected extraction accuracy >= 90%, got {accuracy}%"
+

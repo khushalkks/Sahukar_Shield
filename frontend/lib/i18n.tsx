@@ -25,12 +25,15 @@ const I18nContext = createContext<I18nContextType>({
 });
 
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLangState] = useState<Language>("hinglish");
+  const [lang, setLangState] = useState<Language>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("sahukar_shield_lang") as Language;
     if (saved && (saved === "hinglish" || saved === "hi" || saved === "en")) {
       setLangState(saved);
+    } else {
+      setLangState("en");
+      localStorage.setItem("sahukar_shield_lang", "en");
     }
   }, []);
 

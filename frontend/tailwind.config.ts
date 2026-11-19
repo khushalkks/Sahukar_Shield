@@ -6,30 +6,45 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        navy: {
-          900: "#071324",
-          800: "#0B1F3A", // Primary brand deep navy
-          700: "#132D52",
-          600: "#1E3A8A",
-          100: "#E2E8F0",
-          50: "#F1F5F9",
+        fintech: {
+          dark: "#080C14",
+          card: "#0E1526",
+          elevated: "#152038",
+          border: "#1E2C4A",
+          muted: "#8A99AD",
+          gold: "#D97706",
+          emerald: "#10B981",
+          ruby: "#E11D48",
         },
-        teal: {
-          500: "#14B8A6", // Shield accent teal
-          600: "#0D9488",
+        navy: {
+          950: "#060A12",
+          900: "#080E1A",
+          800: "#0E172A",
+          700: "#1E293B",
+          600: "#334155",
+          100: "#E2E8F0",
+          50: "#F8FAFC",
+        },
+        gold: {
+          400: "#FBBF24",
+          500: "#F59E0B",
+          600: "#D97706",
+          700: "#B45309",
         },
         shield: {
-          safe: "#16A34A",
+          safe: "#10B981",
           risky: "#F59E0B",
-          predatory: "#DC2626",
-          bg: "#F8FAFC",
+          predatory: "#E11D48",
+          bg: "#080C14",
         },
       },
       fontFamily: {
-        sans: ["Inter", "Noto Sans Devanagari", "system-ui", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        mono: ["JetBrains Mono", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {
         "2xl": "1rem",

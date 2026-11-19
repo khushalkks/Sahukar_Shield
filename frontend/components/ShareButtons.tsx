@@ -24,18 +24,18 @@ export default function ShareButtons({ shareText, title = "Sahukar Shield Adviso
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3 font-mono">
       <button
         onClick={shareOnWhatsApp}
-        className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all"
+        className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all font-mono"
       >
         <MessageCircle className="w-4 h-4" />
-        <span>WhatsApp Par Share Karein</span>
+        <span>Broadcast to WhatsApp Group</span>
       </button>
 
       <button
         onClick={handleCopy}
-        className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs shadow-sm transition-all"
+        className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/10 shadow-sm transition-all font-mono"
       >
         {copied ? (
           <>
@@ -45,7 +45,7 @@ export default function ShareButtons({ shareText, title = "Sahukar Shield Adviso
         ) : (
           <>
             <Copy className="w-4 h-4" />
-            <span>Copy Text</span>
+            <span>Copy Advisory Text</span>
           </>
         )}
       </button>

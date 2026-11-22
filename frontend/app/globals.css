@@ -3,83 +3,92 @@
 @tailwind utilities;
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #0F172A;
+  --background: #FAFAFA;
+  --foreground: #09090B;
   --card: #FFFFFF;
-  --card-border: #E2E8F0;
-  --accent-emerald: #059669;
-  --accent-amber: #D97706;
-  --accent-rose: #DC2626;
+  --card-border: #E4E4E7;
+  --accent-emerald: #10B981;
+  --accent-amber: #F59E0B;
+  --accent-rose: #EF4444;
 }
 
 html {
-  background-color: #F8FAFC !important;
-  color: #0F172A;
+  background-color: #FAFAFA !important;
+  color: #09090B;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #F8FAFC !important;
-  color: #0F172A;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #FAFAFA !important;
+  color: #09090B;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Subtle clean grid pattern for light theme */
-.bg-financial-grid {
-  background-color: #F8FAFC;
-  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Modern FinTech Ambient Radial Glow */
+.bg-modern-ambient {
+  background-color: #FAFAFA;
+  background-image: 
+    radial-gradient(at 50% -10%, rgba(16, 185, 129, 0.06) 0px, transparent 60%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.03) 0px, transparent 40%);
 }
 
-/* Modern Light Card Containers */
+/* Subtle clean geometric grid */
+.bg-financial-grid {
+  background-color: #FAFAFA;
+  background-image: radial-gradient(rgba(24, 24, 27, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Modern Refined Card Containers */
 .glass-panel {
   background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #E4E4E7;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
 }
 
 .glass-panel-elevated {
   background-color: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #D4D4D8;
+  box-shadow: 0 4px 20px -2px rgba(24, 24, 27, 0.05);
 }
 
 .glass-panel-gold {
-  background-color: #FFFBEB;
+  background-color: #FFFDF5;
   border: 1px solid #FDE68A;
-  box-shadow: 0 1px 3px 0 rgba(217, 119, 6, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(245, 158, 11, 0.04);
 }
 
 .glass-panel-danger {
-  background-color: #FEF2F2;
+  background-color: #FEF7F7;
   border: 1px solid #FECACA;
-  box-shadow: 0 1px 3px 0 rgba(220, 38, 38, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(239, 68, 68, 0.04);
 }
 
-/* Custom Clean Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #D4D4D8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #A1A1AA;
 }
 
-/* Pulse animation */
-@keyframes live-pulse {
+@keyframes pulse-subtle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
 .animate-live-dot {
-  animation: live-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

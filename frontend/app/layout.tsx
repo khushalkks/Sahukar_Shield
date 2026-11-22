@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "../lib/i18n";
 import Navbar from "../components/Navbar";
-import PrivacyBanner from "../components/PrivacyBanner";
 import Disclaimer from "../components/Disclaimer";
 
 export const metadata: Metadata = {
@@ -17,15 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-[#F8FAFC]" style={{ backgroundColor: "#F8FAFC" }}>
+    <html lang="en" className="bg-[#FAFAFA]" style={{ backgroundColor: "#FAFAFA" }}>
       <body
-        className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-emerald-500 selection:text-white"
-        style={{ backgroundColor: "#F8FAFC", color: "#0F172A" }}
+        className="min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 antialiased font-sans selection:bg-emerald-500 selection:text-white"
+        style={{ backgroundColor: "#FAFAFA", color: "#09090B" }}
       >
         <I18nProvider>
-          <PrivacyBanner />
           <Navbar />
-          <main className="flex-1 bg-[#F8FAFC] text-slate-900">{children}</main>
+          <main className="flex-1 bg-modern-ambient">{children}</main>
           <Disclaimer />
         </I18nProvider>
       </body>

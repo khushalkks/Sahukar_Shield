@@ -207,42 +207,42 @@ I solemnly affirm that the statements recorded above are true to the best of my 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 font-mono">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1E2C4A] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-2">
             <FileText className="w-3.5 h-3.5" />
-            <span>STAGE 4 // EVIDENTIARY REGULATORY DOSSIER &amp; AFFIDAVIT BUILDER</span>
+            <span>Complaint &amp; Affidavit Generator</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight font-sans">
-            Statutory Regulatory Dossier &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400">Affidavit Builder</span>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-sans">
+            File Official Police &amp; Cyber Crime Complaint
           </h1>
-          <p className="text-sm text-slate-400 max-w-2xl mt-1 font-sans font-normal">
-            Compile an official, court-admissible regulatory affidavit formatted for the National Cyber Crime Reporting Portal (cybercrime.gov.in), local Police Stations, and the Reserve Bank of India (RBI) Integrated Ombudsman Scheme.
+          <p className="text-sm text-slate-300 max-w-2xl mt-1 font-sans font-normal leading-relaxed">
+            Generate an official, ready-to-print complaint letter with legal sections, evidence checklist, and timeline formatted for the National Cyber Crime Portal (cybercrime.gov.in) and 1930 helpline.
           </p>
         </div>
 
-        {/* View Switcher: Wizard vs 1930 Phone Script */}
-        <div className="flex items-center gap-2 glass-panel p-1.5 rounded-2xl border border-[#1E2C4A]">
+        {/* View Switcher: Form vs 1930 Phone Script */}
+        <div className="flex items-center gap-2 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
           <button
             onClick={() => setActiveView("wizard")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
               activeView === "wizard"
-                ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                ? "bg-emerald-500 text-slate-950 font-bold"
                 : "text-slate-400 hover:text-white"
             }`}
           >
-            Dossier Wizard
+            Complaint Form
           </button>
           <button
             onClick={() => setActiveView("script")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
               activeView === "script"
-                ? "bg-rose-500 text-white shadow-md shadow-rose-500/20"
+                ? "bg-rose-600 text-white font-bold"
                 : "text-slate-400 hover:text-white"
             }`}
           >
             <PhoneCall className="w-3.5 h-3.5" />
-            <span>1930 Dial Script</span>
+            <span>What to Say on 1930 Call</span>
           </button>
         </div>
       </div>

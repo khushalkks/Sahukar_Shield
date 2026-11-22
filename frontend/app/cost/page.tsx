@@ -253,109 +253,106 @@ export default function TrueCostPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       {/* Top Breadcrumb & Status */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1E2C4A] pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-2">
             <Calculator className="w-3.5 h-3.5" />
-            <span>STAGE 2 // ALGORITHMIC APR &amp; NET DISBURSAL RECONCILIATION</span>
+            <span>Interest &amp; Fee Calculator</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            True Cost X-Ray: <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400">Algorithmic APR Deconstructor</span>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Calculate True Interest (APR) &amp; Hidden Fees
           </h1>
-          <p className="text-sm text-slate-400 max-w-2xl mt-1">
-            Deceptive micro-lending apps advertise &ldquo;0.05% nominal daily interest&rdquo; while deducting 30% upfront on 7-day cycles. We compute the true Effective Annualized Percentage Rate (APR) using deterministic mathematics.
+          <p className="text-sm text-slate-300 max-w-2xl mt-1 leading-relaxed">
+            Instant loan apps advertise &ldquo;low daily interest of 0.05%&rdquo;, but deduct 30% to 40% upfront as processing fees. We calculate your actual Annual Percentage Rate (APR) using exact math so you know the truth.
           </p>
         </div>
 
-        {/* Live Status HUD */}
+        {/* Live Status */}
         <div className="flex items-center gap-3">
-          <div className="glass-panel px-4 py-2.5 rounded-2xl flex items-center gap-3 border border-[#1E2C4A]">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-            <div className="text-right">
-              <span className="block text-[10px] font-mono text-slate-400 uppercase tracking-widest">CALCULATION ENGINE</span>
-              <span className="text-xs font-bold text-white font-mono">DETERMINISTIC V2.4</span>
-            </div>
+          <div className="bg-slate-900 px-3.5 py-2 rounded-xl flex items-center gap-2.5 border border-slate-800 text-xs">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-live-dot" />
+            <span className="text-slate-300 font-medium">Exact Formula Calculation</span>
           </div>
         </div>
       </div>
 
-      {/* Main Interactive Grid: Left Controls & Right Smartphone Simulator */}
+      {/* Main Interactive Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Input Modes & Sliders (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {/* Preset Buttons */}
           <div className="space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <span className="text-xs uppercase tracking-wider text-slate-400 flex items-center gap-1.5 font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>LOAD BENCHMARK AUDIT VECTORS:</span>
+              <span>Load Common Loan Examples:</span>
             </span>
-            <div className="flex flex-wrap gap-2 font-mono">
+            <div className="flex flex-wrap gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => handleSample("sample_predatory_7day")}
-                className="px-3.5 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold transition-all"
+                className="px-3.5 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold transition-all"
               >
                 7-Day Trap (₹5,000)
               </button>
               <button
                 type="button"
                 onClick={() => handleSample("sample_predatory_15day")}
-                className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all"
+                className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold transition-all"
               >
                 15-Day Trap (₹10,000)
               </button>
               <button
                 type="button"
                 onClick={() => handleSample("sample_quick_3000")}
-                className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold transition-all"
+                className="px-3.5 py-1.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 font-semibold transition-all"
               >
                 10-Day QuickCash (₹3,000)
               </button>
               <button
                 type="button"
                 onClick={() => handleSample("sample_safe_bank_emi")}
-                className="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold transition-all"
+                className="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold transition-all"
               >
-                Regulated Bank EMI (₹20,000)
+                Bank Personal Loan (₹20,000)
               </button>
             </div>
           </div>
 
           {/* Mode Tabs */}
           <div className="glass-panel rounded-3xl p-6 border border-[#1E2C4A] space-y-6">
-            <div className="flex border-b border-[#1E2C4A]">
+            <div className="flex border-b border-slate-800">
               <button
                 onClick={() => setActiveTab("sliders")}
-                className={`pb-3 px-4 text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 flex items-center gap-2 ${
+                className={`pb-3 px-4 text-xs font-semibold transition-all border-b-2 flex items-center gap-2 ${
                   activeTab === "sliders"
-                    ? "border-emerald-400 text-emerald-300"
+                    ? "border-emerald-400 text-emerald-400"
                     : "border-transparent text-slate-400 hover:text-white"
                 }`}
               >
                 <Sliders className="w-3.5 h-3.5" />
-                <span>Interactive Sliders</span>
+                <span>Adjust Loan Sliders</span>
               </button>
               <button
                 onClick={() => setActiveTab("upload")}
-                className={`pb-3 px-4 text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 flex items-center gap-2 ${
+                className={`pb-3 px-4 text-xs font-semibold transition-all border-b-2 flex items-center gap-2 ${
                   activeTab === "upload"
-                    ? "border-emerald-400 text-emerald-300"
+                    ? "border-emerald-400 text-emerald-400"
                     : "border-transparent text-slate-400 hover:text-white"
                 }`}
               >
                 <UploadCloud className="w-3.5 h-3.5" />
-                <span>Document OCR</span>
+                <span>Upload Screenshot</span>
               </button>
               <button
                 onClick={() => setActiveTab("text")}
-                className={`pb-3 px-4 text-xs font-mono font-bold uppercase tracking-wider transition-all border-b-2 flex items-center gap-2 ${
+                className={`pb-3 px-4 text-xs font-semibold transition-all border-b-2 flex items-center gap-2 ${
                   activeTab === "text"
-                    ? "border-emerald-400 text-emerald-300"
+                    ? "border-emerald-400 text-emerald-400"
                     : "border-transparent text-slate-400 hover:text-white"
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span>Text Inspector</span>
+                <span>Paste Loan Text</span>
               </button>
             </div>
 
@@ -364,12 +361,12 @@ export default function TrueCostPage() {
               <div className="space-y-6">
                 {/* Principal Slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs font-mono">
-                    <span className="text-slate-300 font-bold flex items-center gap-1.5">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-slate-300 font-semibold flex items-center gap-1.5">
                       <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>SANCTIONED PRINCIPAL FACILITY</span>
+                      <span>Loan Amount Stated by App</span>
                     </span>
-                    <span className="text-emerald-400 font-black text-sm bg-emerald-950/60 px-3 py-1 rounded-lg border border-emerald-800">
+                    <span className="text-emerald-400 font-bold text-sm bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">
                       ₹{principal.toLocaleString()}
                     </span>
                   </div>
@@ -382,7 +379,7 @@ export default function TrueCostPage() {
                     onChange={(e) => setPrincipal(Number(e.target.value))}
                     className="w-full accent-emerald-400 h-2 bg-slate-800 rounded-lg cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] font-mono text-slate-500">
+                  <div className="flex justify-between text-xs text-slate-500">
                     <span>₹1,000</span>
                     <span>₹25,000</span>
                     <span>₹50,000</span>
@@ -391,10 +388,10 @@ export default function TrueCostPage() {
                 </div>
 
                 {/* Deductions Breakdown Sliders */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-white/5 font-mono">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-800">
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-bold">UPFRONT PROCESSING FEE</span>
+                      <span className="text-slate-400 font-medium">Upfront Processing Fee Deducted</span>
                       <span className="text-rose-400 font-bold">₹{processingFee.toLocaleString()}</span>
                     </div>
                     <input
@@ -410,7 +407,7 @@ export default function TrueCostPage() {
 
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-bold">GST &amp; TAX ON FEE</span>
+                      <span className="text-slate-400 font-medium">GST on Processing Fee</span>
                       <span className="text-rose-400 font-bold">₹{gstOnFee.toLocaleString()}</span>
                     </div>
                     <input
@@ -426,7 +423,7 @@ export default function TrueCostPage() {
 
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-bold">OTHER HIDDEN DEDUCTIONS</span>
+                      <span className="text-slate-400 font-medium">Other Hidden Fees &amp; Deductions</span>
                       <span className="text-rose-400 font-bold">₹{otherDeductions.toLocaleString()}</span>
                     </div>
                     <input
@@ -442,7 +439,7 @@ export default function TrueCostPage() {
 
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-slate-400 font-bold">REPAYMENT DEMANDED</span>
+                      <span className="text-slate-400 font-medium">Total Amount Demanded Back</span>
                       <span className="text-amber-400 font-bold">₹{repaymentAmount.toLocaleString()}</span>
                     </div>
                     <input
@@ -458,18 +455,18 @@ export default function TrueCostPage() {
                 </div>
 
                 {/* Tenure Slider */}
-                <div className="space-y-2 pt-2 border-t border-white/5 font-mono">
+                <div className="space-y-2 pt-2 border-t border-slate-800">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-300 font-bold flex items-center gap-1.5">
+                    <span className="text-slate-300 font-semibold flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>FACILITY TENURE (DAYS)</span>
+                      <span>Loan Repayment Deadline (Days)</span>
                     </span>
-                    <span className={`font-black text-sm px-3 py-1 rounded-lg border ${
+                    <span className={`font-bold text-xs px-2.5 py-1 rounded-lg border ${
                       tenureDays <= 15
-                        ? "bg-rose-950/80 text-rose-400 border-rose-800 animate-pulse"
+                        ? "bg-rose-950/80 text-rose-400 border-rose-800"
                         : "bg-slate-800 text-slate-200 border-slate-700"
                     }`}>
-                      {tenureDays} Days {tenureDays <= 15 ? "(PREDATORY PATTERN)" : ""}
+                      {tenureDays} Days {tenureDays <= 15 ? "(Illegal 7-15 Day Trap)" : ""}
                     </span>
                   </div>
                   <input
@@ -481,8 +478,8 @@ export default function TrueCostPage() {
                     onChange={(e) => setTenureDays(Number(e.target.value))}
                     className="w-full accent-emerald-400 h-2 bg-slate-800 rounded-lg cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] text-slate-500">
-                    <span className="text-rose-400 font-bold">7 Days (Usury Trap)</span>
+                  <div className="flex justify-between text-xs text-slate-500">
+                    <span className="text-rose-400 font-medium">7 Days (Scam Trap)</span>
                     <span className="text-amber-400">15 Days</span>
                     <span>90 Days</span>
                     <span>180 Days</span>
@@ -572,9 +569,9 @@ export default function TrueCostPage() {
                 type="button"
                 onClick={handleCalculate}
                 disabled={isCalculating}
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 hover:opacity-90 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/20 font-mono transition-all transform active:scale-[0.99]"
+                className="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm tracking-wide shadow-lg shadow-emerald-500/20 transition-all transform active:scale-[0.99]"
               >
-                {isCalculating ? "RE-EVALUATING FINANCIAL METRICS..." : "RE-EVALUATE REGULATORY AUDIT"}
+                {isCalculating ? "Calculating Interest..." : "Calculate Full APR Breakdown"}
               </button>
             </div>
           </div>
@@ -583,13 +580,13 @@ export default function TrueCostPage() {
         {/* Right Column: Interactive Smartphone Mockup Preview (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
           <div className="space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <span className="text-xs uppercase tracking-wider text-slate-400 flex items-center gap-1.5 font-semibold">
               <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>LIVE DIGITAL CREDIT APPLICATION PREVIEW:</span>
+              <span>What It Looks Like on Your Phone:</span>
             </span>
 
             {/* Smartphone Frame */}
-            <div className="relative mx-auto w-full max-w-[340px] rounded-[44px] bg-[#0A101D] border-4 border-[#1E2C4A] p-3 shadow-2xl shadow-black/60">
+            <div className="relative mx-auto w-full max-w-[340px] rounded-[40px] bg-[#0A101D] border-4 border-slate-800 p-3 shadow-2xl shadow-black/60">
               {/* Speaker / Camera Notch */}
               <div className="mx-auto h-4 w-28 bg-[#060A14] rounded-b-xl flex items-center justify-center space-x-2 mb-2">
                 <div className="w-2 h-2 rounded-full bg-slate-800" />
@@ -597,49 +594,49 @@ export default function TrueCostPage() {
               </div>
 
               {/* Screen Content */}
-              <div className="rounded-[32px] bg-gradient-to-b from-[#0E172A] via-[#091122] to-[#060A14] p-4 border border-white/5 space-y-4 text-white overflow-hidden relative">
+              <div className="rounded-[28px] bg-gradient-to-b from-[#0E172A] via-[#091122] to-[#060A14] p-4 border border-white/5 space-y-4 text-white overflow-hidden relative">
                 {/* Simulated App Header */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-2">
                   <div className="flex items-center space-x-2">
-                    <div className="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center text-[10px] font-black">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center text-xs font-bold">
                       ₹
                     </div>
-                    <span className="text-xs font-bold tracking-tight">InstantRupee Pocket</span>
+                    <span className="text-xs font-bold tracking-tight">InstantRupee Loan</span>
                   </div>
-                  <span className="text-[9px] font-mono text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-full border border-rose-800">
-                    7-Day Facility
+                  <span className="text-[10px] text-rose-400 bg-rose-950/60 px-2 py-0.5 rounded-full border border-rose-800">
+                    7-Day Deadline
                   </span>
                 </div>
 
                 {/* Stated Limit vs Disbursal */}
-                <div className="rounded-2xl bg-white/5 p-3.5 border border-white/5 space-y-2">
-                  <div className="flex justify-between items-baseline font-mono">
-                    <span className="text-[10px] text-slate-400 uppercase">Gross Sanction</span>
-                    <span className="text-base font-black text-white">₹{principal.toLocaleString()}</span>
+                <div className="rounded-xl bg-white/5 p-3.5 border border-white/5 space-y-2">
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-xs text-slate-400">Loan Amount:</span>
+                    <span className="text-base font-extrabold text-white">₹{principal.toLocaleString()}</span>
                   </div>
 
-                  <div className="space-y-1 pt-2 border-t border-white/5 text-[11px] font-mono">
+                  <div className="space-y-1 pt-2 border-t border-white/5 text-xs">
                     <div className="flex justify-between text-slate-400">
-                      <span>Upfront Deductions:</span>
+                      <span>Upfront Fees Cut:</span>
                       <span className="text-rose-400 font-bold">-₹{liveStats.totalDeductions.toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between text-slate-300 font-bold pt-1 border-t border-white/5">
-                      <span className="text-emerald-400">Net Disbursal Credited:</span>
-                      <span className="text-emerald-400 font-black">₹{liveStats.computedDisbursed.toLocaleString()}</span>
+                    <div className="flex justify-between text-slate-200 font-bold pt-1 border-t border-white/5">
+                      <span className="text-emerald-400">Money in Your Bank:</span>
+                      <span className="text-emerald-400 font-extrabold">₹{liveStats.computedDisbursed.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Repayment Reality Callout */}
-                <div className="rounded-2xl bg-rose-950/40 p-3.5 border border-rose-500/30 space-y-2">
-                  <div className="flex justify-between items-baseline font-mono">
-                    <span className="text-[10px] text-rose-300 uppercase font-bold">Repay by Day {tenureDays}</span>
-                    <span className="text-lg font-black text-rose-400">₹{repaymentAmount.toLocaleString()}</span>
+                <div className="rounded-xl bg-rose-950/40 p-3.5 border border-rose-500/30 space-y-2">
+                  <div className="flex justify-between items-baseline">
+                    <span className="text-xs text-rose-300 font-semibold">Repay in {tenureDays} Days:</span>
+                    <span className="text-lg font-extrabold text-rose-400">₹{repaymentAmount.toLocaleString()}</span>
                   </div>
-                  <p className="text-[10px] text-slate-300 leading-tight">
-                    Effective financing penalty for {tenureDays} days:
-                    <strong className="text-rose-300 font-bold block mt-0.5 font-mono">
-                      ₹{liveStats.totalCost.toLocaleString()} ({liveStats.costPct}% of disbursed capital)
+                  <p className="text-xs text-slate-300 leading-tight">
+                    Extra money lost in just {tenureDays} days:
+                    <strong className="text-rose-300 font-bold block mt-0.5">
+                      ₹{liveStats.totalCost.toLocaleString()} ({liveStats.costPct}% of what you received)
                     </strong>
                   </p>
                 </div>
@@ -680,19 +677,19 @@ export default function TrueCostPage() {
       )}
 
       {/* Visual Telemetry & Deconstructed Results Section */}
-      <div className="space-y-6 pt-6 border-t border-[#1E2C4A]">
+      <div className="space-y-6 pt-6 border-t border-slate-800">
         {/* Highlight Banner */}
-        <div className="glass-panel-danger rounded-3xl p-6 sm:p-8 border border-rose-500/30 text-center space-y-2 relative overflow-hidden">
-          <span className="text-xs uppercase font-mono font-bold tracking-widest text-rose-400">
-            FINANCIAL DECONSTRUCTION // CASHFLOW RECONCILIATION
+        <div className="bg-rose-950/30 rounded-2xl p-6 sm:p-7 border border-rose-900/50 text-center space-y-2 relative overflow-hidden">
+          <span className="text-xs uppercase font-semibold tracking-wider text-rose-400">
+            Real Cost Breakdown
           </span>
-          <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Net Capital Credited: ₹{liveStats.computedDisbursed.toLocaleString()} &rarr; Contractual Due: ₹{repaymentAmount.toLocaleString()}
+          <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+            You Received ₹{liveStats.computedDisbursed.toLocaleString()} &rarr; You Must Pay ₹{repaymentAmount.toLocaleString()}
           </h2>
-          <p className="text-sm text-slate-300 font-mono">
-            Direct financing penalty for {tenureDays} days:{" "}
+          <p className="text-xs sm:text-sm text-slate-300">
+            Total extra charges for just {tenureDays} days:{" "}
             <strong className="text-rose-400 font-bold">
-              ₹{liveStats.totalCost.toLocaleString()} ({liveStats.costPct}% of disbursed funds)
+              ₹{liveStats.totalCost.toLocaleString()} ({liveStats.costPct}% of what you received)
             </strong>
           </p>
         </div>
@@ -705,40 +702,40 @@ export default function TrueCostPage() {
             verdict={liveStats.verdict}
             title={
               liveStats.verdict === "PREDATORY"
-                ? "PREDATORY FACILITY (USURIOUS LOOT)"
+                ? "Illegal Scam Loan (Dangerous Interest)"
                 : liveStats.verdict === "RISKY"
-                ? "HIGH RISK / DEBT TRAP"
-                : "SAFE / REGULATED RATE"
+                ? "High Risk / Heavy Deductions"
+                : "Safe & Reasonable Interest Rate"
             }
             subtitle={
               aprResult?.explanation ||
-              `Annualized effective yield of ${liveStats.simpleApr.toLocaleString()}% p.a. extracted from ${tenureDays}-day repayment cycle.`
+              `This loan charges an annualized interest rate of ${liveStats.simpleApr.toLocaleString()}% p.a. over a short ${tenureDays}-day repayment window.`
             }
             reasons={[
-              `Simple Annualised APR: ${liveStats.simpleApr.toLocaleString()}%`,
-              `${tenureDays}-day tenure violates RBI minimum tenure guidelines`,
-              `Immediate fee deduction of ₹${liveStats.totalDeductions.toLocaleString()} prior to disbursal`,
-              kfsAprShown ? "KFS APR was explicitly stated" : "Mandatory Key Fact Statement (KFS) was concealed",
+              `Calculated Annual Interest (APR): ${liveStats.simpleApr.toLocaleString()}% per year`,
+              `${tenureDays}-day repayment deadline violates RBI's minimum tenure regulations`,
+              `₹${liveStats.totalDeductions.toLocaleString()} was cut upfront before sending money to your bank`,
+              kfsAprShown ? "Annual APR was disclosed" : "Annual interest was hidden from you",
             ]}
-            ctaText="Facing harassment from this entity? -> Launch Recovery Triage"
+            ctaText="Being threatened for repayment? Get help now"
             ctaHref="/threat"
           />
         </div>
 
         {/* Recharts Benchmark Comparison Bar Chart */}
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-[#1E2C4A] space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-4">
+        <div className="bg-[#111827] border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
                 <Landmark className="w-4 h-4 text-emerald-400" />
-                <span>Yield Comparison: Prime Banking vs Predatory Facility</span>
+                <span>How This Compares with Real Bank Loans</span>
               </h3>
-              <p className="text-xs text-slate-400 font-mono">
-                Annualized percentage rate (APR) compared across regulated commercial banks, NBFCs, and credit card standards.
+              <p className="text-xs text-slate-400">
+                Compare this loan&apos;s annual interest rate against regular banks, NBFCs, and credit cards.
               </p>
             </div>
-            <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-800 self-start sm:self-auto">
-              RBI REGULATORY CEILINGS
+            <span className="text-xs text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-800 self-start sm:self-auto font-medium">
+              RBI Standards
             </span>
           </div>
 

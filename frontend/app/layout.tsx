@@ -6,9 +6,9 @@ import PrivacyBanner from "../components/PrivacyBanner";
 import Disclaimer from "../components/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "Sahukar Shield | Digital Lending Audit & Regulatory Defense",
+  title: "Sahukar Shield | Check Loan Apps, Real Interest & Harassment Defense",
   description:
-    "Institutional credit audit, Reserve Bank of India (RBI) CoR verification, true effective APR deconstruction, and statutory cybercrime affidavit compilation.",
+    "Free consumer defense against illegal digital loan apps. Verify RBI NBFC registration, calculate true 2,000%+ APR, and generate official cybercrime complaints.",
 };
 
 export default function RootLayout({
@@ -17,15 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark bg-[#080C14]" style={{ backgroundColor: "#080C14" }}>
+    <html lang="en" className="bg-[#F8FAFC]" style={{ backgroundColor: "#F8FAFC" }}>
       <body
-        className="min-h-screen flex flex-col bg-[#080C14] text-slate-100 antialiased font-sans selection:bg-emerald-500 selection:text-slate-950"
-        style={{ backgroundColor: "#080C14" }}
+        className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-emerald-500 selection:text-white"
+        style={{ backgroundColor: "#F8FAFC", color: "#0F172A" }}
       >
         <I18nProvider>
           <PrivacyBanner />
           <Navbar />
-          <main className="flex-1 bg-[#080C14]">{children}</main>
+          <main className="flex-1 bg-[#F8FAFC] text-slate-900">{children}</main>
           <Disclaimer />
         </I18nProvider>
       </body>

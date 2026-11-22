@@ -24,25 +24,25 @@ export default function AprGauge({ apr, verdict }: AprGaugeProps) {
 
   const verdictColor =
     verdict === "SAFE"
-      ? "text-emerald-400"
+      ? "text-emerald-700"
       : verdict === "RISKY"
-      ? "text-amber-400"
-      : "text-rose-500";
+      ? "text-amber-700"
+      : "text-rose-700";
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-[#0E1526] rounded-3xl shadow-xl border border-[#1E2C4A] backdrop-blur-md font-mono">
+    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl shadow-sm border border-slate-200">
       <div className="relative w-64 h-36 flex items-center justify-center overflow-hidden">
         <svg viewBox="0 0 200 120" className="w-64 h-36">
           {/* Background track arc */}
           <path
             d="M 20 100 A 80 80 0 0 1 180 100"
             fill="none"
-            stroke="#1E2C4A"
+            stroke="#E2E8F0"
             strokeWidth="14"
             strokeLinecap="round"
           />
 
-          {/* Safe Zone Arc (0 - 36%): Financial Emerald */}
+          {/* Safe Zone Arc (0 - 36%): Emerald */}
           <path
             d="M 20 100 A 80 80 0 0 1 60 40"
             fill="none"
@@ -51,7 +51,7 @@ export default function AprGauge({ apr, verdict }: AprGaugeProps) {
             strokeLinecap="round"
           />
 
-          {/* Risky Zone Arc (36 - 100%): Financial Gold */}
+          {/* Risky Zone Arc (36 - 100%): Amber */}
           <path
             d="M 64 36 A 80 80 0 0 1 115 22"
             fill="none"
@@ -59,27 +59,27 @@ export default function AprGauge({ apr, verdict }: AprGaugeProps) {
             strokeWidth="14"
           />
 
-          {/* Predatory Zone Arc (100%+): Usury Ruby */}
+          {/* Predatory Zone Arc (100%+): Rose */}
           <path
             d="M 120 22 A 80 80 0 0 1 180 100"
             fill="none"
-            stroke="#E11D48"
+            stroke="#EF4444"
             strokeWidth="14"
             strokeLinecap="round"
           />
 
-          {/* Needle Pointer with Gold Pivot */}
+          {/* Needle Pointer */}
           <g transform={`rotate(${angle}, 100, 100)`} className="transition-transform duration-700 ease-out">
-            <polygon points="98,100 102,100 100,24" fill="#F59E0B" filter="drop-shadow(0 0 6px #F59E0B)" />
-            <circle cx="100" cy="100" r="7" fill="#080C14" stroke="#F59E0B" strokeWidth="2" />
+            <polygon points="98,100 102,100 100,24" fill="#0F172A" />
+            <circle cx="100" cy="100" r="7" fill="#0F172A" stroke="#FFFFFF" strokeWidth="2" />
             <circle cx="100" cy="100" r="3" fill="#FFFFFF" />
           </g>
         </svg>
 
         {/* Labels underneath the arch */}
         <div className="absolute bottom-0 text-center">
-          <span className="text-[10px] font-bold text-slate-400 block tracking-widest uppercase">
-            Effective Annualized APR
+          <span className="text-xs font-bold text-slate-500 block uppercase tracking-wider">
+            Annual Interest Rate (APR)
           </span>
           <span className={`text-3xl sm:text-4xl font-black tracking-tight ${verdictColor}`}>
             {displayApr}
@@ -88,15 +88,15 @@ export default function AprGauge({ apr, verdict }: AprGaugeProps) {
       </div>
 
       {/* Legend below gauge */}
-      <div className="flex items-center justify-between w-full max-w-xs mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 border-t border-[#1E2C4A] pt-3">
-        <span className="flex items-center gap-1.5 text-emerald-400">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10B981]" /> Regulated (&le;36%)
+      <div className="flex items-center justify-between w-full max-w-xs mt-4 text-xs font-bold text-slate-600 uppercase tracking-wider px-2 border-t border-slate-200 pt-3">
+        <span className="flex items-center gap-1.5 text-emerald-800 font-extrabold">
+          <span className="w-2 h-2 rounded-full bg-emerald-500" /> &le;36% (Safe)
         </span>
-        <span className="flex items-center gap-1.5 text-amber-400">
-          <span className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_#F59E0B]" /> High Yield (36-100%)
+        <span className="flex items-center gap-1.5 text-amber-800 font-extrabold">
+          <span className="w-2 h-2 rounded-full bg-amber-500" /> 36-100% (High)
         </span>
-        <span className="flex items-center gap-1.5 text-rose-400">
-          <span className="w-2 h-2 rounded-full bg-rose-500 shadow-[0_0_8px_#E11D48]" /> Usury (&gt;100%)
+        <span className="flex items-center gap-1.5 text-rose-800 font-extrabold">
+          <span className="w-2 h-2 rounded-full bg-rose-500" /> &gt;100% (Usury)
         </span>
       </div>
     </div>

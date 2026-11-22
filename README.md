@@ -9,7 +9,7 @@
 
 ---
 
-## 📌 Executive Summary (Hackathon Submission)
+## 📌 Executive Summary 
 
 In India, **unauthorized 7-day instant loan apps** have created an acute national crisis. Distributed through social media advertisements and sideloaded APKs, these predatory syndicates target low-income and financially vulnerable citizens with deceptive promises of *"instant cash without credit checks"*. 
 
